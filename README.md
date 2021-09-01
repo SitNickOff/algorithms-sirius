@@ -15,10 +15,6 @@ git clone https://github.com/SitNickOff/algorithms-sirius.git
 - Документация: https://git-scm.com/book/ru/v2
 - Интерактивный тур: https://githowto.com/ru
 
-```bash
-git checkout git-crib
-```
-
 ## Шпаргалка Python
 
 ```bash
