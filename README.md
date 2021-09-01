@@ -5,7 +5,7 @@
 git checkout git-crib
 ```
 
-## Шпаргалка Python
+## Шпаргалка Python 
 
 ```bash
 git checkout python
