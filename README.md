@@ -12,6 +12,7 @@
 git clone https://github.com/SitNickOff/algorithms-sirius.git
 ```
 
+Workflow для github: https://www.figma.com/file/1YsaOtJayQapUo2B3FJBz7/github-workflow?node-id=0%3A1
 ## Шпаргалка Git
 
 - Документация: https://git-scm.com/book/ru/v2
