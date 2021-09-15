@@ -5,10 +5,3 @@
 
 def linear_search(numbers, x):
     return -1
-n=int(input())
-numbers=[]
-for i in range(n):
-    numbers.appendint(int(input()))
-x = int(input())
-result = linear_search(numbers,x)
-print(result)
