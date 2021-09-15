@@ -3,5 +3,5 @@
 
 # Решить задачу применяя алгоритм бинарного поиска
 
-def linear_search(numbers, x):
+def binary_search(numbers, x):
     return -1
