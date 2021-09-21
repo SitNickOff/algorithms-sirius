@@ -29,9 +29,24 @@
 # 10
 
 def add(b1, b2):
-    binary = '0'
+    if len(b1) < len(b2):
+      b1 = (len(b2) - len(b1))*'0'+ b1
+    elif len(b2) < len(b1):
+      b2 = (len(b1) - len(b2))*'0'+ b2
 
-    return binary
+    sumList=[]
+    carryover=0
+
+    for i in range(len(b1) -1, -1, -1):
+        sum = (int(b1[i]) + int(b2[i]) +carryover) % 2    
+        carryover = (int(b1[i]) + int(b2[i]) +carryover) // 2
+        sumList.append(str(sum))
+
+    if carryover:
+        sumList.append(str(carryover))
+
+    sumList.reverse()
+    return "".join(sumList)
 
 def test(b1, b2, result):
     if add(b1, b2) != result:

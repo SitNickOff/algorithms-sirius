@@ -13,8 +13,15 @@
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
 def factorizate(n):
-    
-    return [n]
+    fact = []
+    i = 2
+    while i <= n:
+        if n%i ==0:
+            fact.append(i)
+            n //= i
+        else:
+            i += 1
+    return fact
 
 
 def test(n, result):
