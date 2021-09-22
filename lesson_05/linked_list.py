@@ -33,14 +33,40 @@ node2 = Node('Node2', node3)
 node1 = Node('Node1', node2)
 node0 = Node('Node0', node1)
 
-print_linked_list(node0)
-print_linked_list(node2) 
+new_head = Node('New Head', node0)
+new_tail = Node('New Tail')
+node3.next = new_tail
+middle_node = Node("Middle Node", node2)
+node1.next = middle_node
 
-# head = insert_node(node0, 2, 'Серединка')
-# print_linked_list(head)
+def get_node_by_index(node, index):
+        while index:
+             node = node.next
+             index -= 1
+        return node
 
-# head = insert_node(head, 5, 'Хвост')
-# print_linked_list(head)
+def insert_node(head, index, value):
+        new_node = Node(value)
 
-# head = insert_node(head, 0, 'Голова')
-# print_linked_list(head)
+        if index == 0:
+                new_node.next = head
+                return new_node
+
+        previous_node = get_node_by_index(head, index-1)
+        new_node.next = previous_node.next 
+        previous_node.next = new_node
+        return head
+
+#print_linked_list(node0)
+#print_linked_list(node2) 
+#print_linked_list(new_head)
+
+
+head = insert_node(node0, 2, 'Серединка')
+print_linked_list(head)
+
+head = insert_node(head, 5, 'Хвост')
+print_linked_list(head)
+
+head = insert_node(head, 0, 'Голова')
+print_linked_list(head)
