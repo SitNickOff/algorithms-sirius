@@ -1,5 +1,5 @@
 import unittest
-from two_sum import two_sum_primary, two_sum_optimized
+from two_sum.py import two_sum_primary, two_sum_optimized
 from math import pi
 
 
