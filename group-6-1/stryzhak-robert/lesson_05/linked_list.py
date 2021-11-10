@@ -36,11 +36,11 @@ node0 = Node('Node0', node1)
 print_linked_list(node0)
 print_linked_list(node2) 
 
-# head = insert_node(node0, 2, 'Серединка')
-# print_linked_list(head)
+head = insert_node(node0, 2, 'Серединка')
+print_linked_list(head)
 
-# head = insert_node(head, 5, 'Хвост')
-# print_linked_list(head)
+head = insert_node(head, 5, 'Хвост')
+print_linked_list(head)
 
-# head = insert_node(head, 0, 'Голова')
-# print_linked_list(head)
+head = insert_node(head, 0, 'Голова')
+print_linked_list(head)
