@@ -12,4 +12,4 @@ def binary_search_iterative(arr, elem):
     return False
 
 a = [1,1,2,3,4,5,6,67,543,23,23,21,12,122]
-print(binary_search_iterative(a,2))
+print(binary_search_iterative(a,122))
