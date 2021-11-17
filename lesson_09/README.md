@@ -3,6 +3,8 @@
 ### Задачи занятия № 09: Абстракция отображения, хеш-таблица
 
 - [ ] Реализовать наивно ассоциативный массив (map.py)
+- [ ] Выполнить домашнее задание: Печеньки (circles.py)
 
 Теория: 
 1. Абстракция отображения: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=786%3A3
+2. Что такое хеш-таблица и хеш-функция: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=787%3A7
