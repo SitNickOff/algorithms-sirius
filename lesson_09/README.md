@@ -6,7 +6,11 @@
 - [ ] Выполнить домашнее задание: Печеньки (circles.py)
 - [ ] Выполнить домашнее задание: Странное сравнение (comparison.py)
 - [ ] Выполнить домашнее задание: Соревнование (competition.py)
+- [ ] Реализовать алгоритм вычисления полиномиального хеша (polynomial_hash.py)
+
 
 Теория: 
 1. Абстракция отображения: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=786%3A3
 2. Что такое хеш-таблица и хеш-функция: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=787%3A7
+3. Выбор размера хеш-таблицы и вычисление номера корзины: 
+4. Построение хеш-функций для строк: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=791%3A57
