@@ -12,9 +12,23 @@
 # Формат вывода
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
+def primary(x):
+    for i in range(2, x+1):
+        if x % i == 0:
+            if x == i:
+                return 1
+            else:
+                return 0
+
 def factorizate(n):
-    
-    return [n]
+    digits=[]
+    while n != 1:
+        for i in range(2, n+1):
+            if (n % i == 0) and (primary(i)==1):
+                n = n // i
+                digits.append(i)
+    digits.sort()
+    return digits
 
 
 def test(n, result):

@@ -9,8 +9,24 @@
 # Выведите лишнюю букву.
 
 def extra_letter(s, t):
-
-    return 'e'
+    list_s = [i for i in s].sort             
+    list_t = [i for i in t].sort
+    
+    i = 0
+    if len(s) > len(t):
+        list_t.append(" ")         
+        while i < len(s):
+            if list_s[i] != list_t[i]:      
+                return list_s[i]
+            else:
+                i+=1
+    else:
+        list_s.append(" ")              
+        while i < len(t):
+            if list_s[i] != list_t[i]:
+                return list_t[i]
+            else:
+                i+=1
 
 
 def test(s, t, result):
