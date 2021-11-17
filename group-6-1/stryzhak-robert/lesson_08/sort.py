@@ -10,7 +10,7 @@ def insertion_sort(array):
             j -= 1
 
         array[j] = item_to_insert
-        # print(f'step {i}, sorted {i+1} elements: {array}')
+        print(f'step {i}, sorted {i+1} elements: {array}')
 
 insertion_sort([11, 2, 9, 7, 1])
 
@@ -55,7 +55,7 @@ def insertion_sort_by_comparator(array, less):
 cards = [3, 7, 9, 2, 3]
 insertion_sort_by_comparator(cards, is_first_card_weaker) 
 
-# print(f'{cards}')
+print(f'{cards}')
 
 
 digit_lengths = [4, 4, 3, 3, 6, 4, 5, 4, 6, 6]  # длины слов «ноль», «один»,...
@@ -113,7 +113,7 @@ def merge_sort(array):
     
     return result 
 
-# merge_sort([7, 3, 9, 0, 25])
+merge_sort([7, 3, 9, 0, 25])
 
 def partition(array, pivot):
     less = [] # элементы array, меньшие pivot
@@ -140,4 +140,4 @@ def counting_sort(array, k):
     for value in range(k):
         for value in counted_values:
             array[index] = value
-            index += 1 
+            index += 1

@@ -34,4 +34,23 @@
 # 5
 # 2 4 5 2 10
 
-# 542210
+# 542210\
+
+n = int(input())
+numbers = []
+
+for i in range(n):
+    numbers.append(int(input()))
+print(numbers)
+numbers = sorted(numbers)
+print(numbers)
+
+c = ''
+
+for i in range(len(numbers)-1,0,-1):
+    c += str(numbers[i])
+print('}}}}')
+print(c)
+
+
+
