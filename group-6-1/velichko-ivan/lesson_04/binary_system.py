@@ -29,8 +29,20 @@
 # 10
 
 def add(b1, b2):
-    binary = '0'
-
+    binary = ''
+    shift = 0
+    for i in range(1, len(b1) + 1, 1):
+        if int(b1[-i]) + int(b2[-i]) + shift == 0:
+            binary = '0' + binary
+            shift = 0
+        elif int(b1[-i]) + int(b2[-i]) + shift == 1:
+            binary = '1' + binary
+            shift = 0
+        elif int(b1[-i]) + int(b2[-i]) + shift == 2:
+            binary = '0' + binary
+            shift = 1
+    if shift == 1:
+        binary = '1' + binary
     return binary
 
 def test(b1, b2, result):
