@@ -10,7 +10,14 @@
 
 def extra_letter(s, t):
 
-    return 'e'
+    i = 0
+    for i in s:
+
+        if (i in t) == False :
+            return i
+        else:
+            t = t[:t.find(i)] + t[t.find(i) + 1:]
+    return t
 
 
 def test(s, t, result):
