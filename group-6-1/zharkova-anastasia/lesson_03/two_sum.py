@@ -3,18 +3,30 @@
 # Гарантируется, что такие элементы в массиве есть.
 
 # 1. Решить задачу применяя наивный алгоритм
-# 2. Предлжить второе решение, которое оптимизрует наивны алгоритм 
+# 2. Предложить второе решение, которое оптимизрует наивны алгоритм 
 # с применеием сортировки или вспомогательных структур
 
+
 def two_sum_primary(numbers, sum):
-    return [1, 9]
+    for i in range(len(numbers)):                       
+        for j in range(len(numbers)):                   
+            if j != i:                                  
+                if numbers[i] + numbers[j] == sum:      
+                    return [numbers[i], numbers[j]]
+    return -1
 
 def two_sum_optimized(numbers, sum):
-    return [3, 5]
+    for i in range(len(numbers)):
+        if (sum - numbers[i]) in numbers:
+            return [numbers[i], sum - numbers[i]]                                      
+    return -1                                       
 
-# numbers = list(map(int, input().split()))
-# sum = int(input())
+def test(result, aw_result):
+    if result == aw_result:
+        print('Всё работает! ', result, ' = ', aw_result)
+    else:
+        print('Ошибка! ', result, ' != ', aw_result)
 
-# print('primary', two_sum_primary(numbers, sum))
-# print('optimized', two_sum_primary(numbers, sum))
+test(two_sum_primary([1, 2, 3, 5, 9], 10), [1, 9])
+test(two_sum_optimized([1, 2, 3, 5, 9], 8), [3, 5])
 
