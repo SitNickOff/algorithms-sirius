@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 # Периметр треугольника
 # Все языки	Python 3.7.3	GNU c++17 7.3
 # Ограничение времени	1 секунда	0.12 секунд	0.015 секунд
@@ -33,3 +34,20 @@
 
 # 20
 
+n = int(input())
+b = input()
+c = sorted(list(map(int,b.split())))
+print(c)
+maxx = 0
+def perimetr(a,b,c):
+    if a + b > c and a + c > b and c + b > a:
+        return True
+    else:
+        return False
+for i in range(len(c)-2):
+    for g in range(i+1,len(c)-1):
+        for j in range(g+1,len(c)):
+            if perimetr(c[i],c[g],c[j]):
+                if  (c[i]+c[g]+ c[j]) > maxx:
+                    maxx = (c[i]+c[g]+ c[j])
+print(maxx)

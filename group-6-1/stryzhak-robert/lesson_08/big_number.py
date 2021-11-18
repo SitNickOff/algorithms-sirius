@@ -36,21 +36,35 @@
 
 # 542210\
 
-n = int(input())
-numbers = []
 
-for i in range(n):
-    numbers.append(int(input()))
-print(numbers)
-numbers = sorted(numbers)
-print(numbers)
 
-c = ''
+numbers = input()
+numbers_ = sorted(list(map(int,numbers.split())))
+numbers_array_1 = []
+numbers_array_2 = []
 
-for i in range(len(numbers)-1,0,-1):
-    c += str(numbers[i])
-print('}}}}')
-print(c)
+for i in range(len(numbers_)):
+    if numbers_[i] % 10 == 0:
+        numbers_array_1.append(numbers_[i])
+    else:
+        numbers_array_2.append(numbers_[i])
+
+
+def
+# как тут нужно это все реализовать:
+# имеются 2 массива, во втором хранятся все обычные числа
+# а в 1м хранятся те, котоорые при делении на 10 в остатке дают 0
+#их нужно отсортировать нормально
+#
+#
+
+
+    
+
+
+
+
+
 
 
 

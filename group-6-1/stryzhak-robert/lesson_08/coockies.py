@@ -42,3 +42,56 @@
 # 1 1
 
 # 1
+def test(s, t, result):
+    if coooockies(s, t) != result:
+        print('Ошибка! Ожидали: ', result, ' -  Получили: ', coooockies(s, t))
+    else:
+        print('Отлично: ', result, '==', coooockies(s, t))
+
+
+'''n = int(input())
+children = []
+for i in range(n):
+    children.append(int(input()))
+
+m = int(input())
+coockies = []
+for i in range(m):
+    coockies.append(int(input()))'''
+
+
+def coooockies(a,b):
+    a = sorted(a)
+    b = sorted(b)
+
+    kol = 0
+    if len(a) <= len(b):
+        counter = len(a)
+    else:
+        counter = len(b)
+
+    for i in range(counter):
+        if a[i] <= b[i]:
+            kol += 1
+    return kol
+
+
+print()
+
+
+test([1,2],[1,2,3],2)
+test([2,1,3],[1,1],1)
+test([10,3],[1,2,3,4,5,6,7],2)
+test([1,2],[1,2,3],2)
+test([1,2],[1,2,3],2)
+
+
+
+
+
+
+
+
+
+
+
