@@ -13,7 +13,7 @@ def binarySearch(arr, x, left = 0, right = None):
     else: # иначе следует искать в правой половине
         return binarySearch(arr, x, mid + 1, right)
 
-# изначально мы запускаем двоичный поиск на всей длине массива
+
 arr = [1, 2, 5, 10, 17]
 x = 0
 index = binarySearch(arr, x)

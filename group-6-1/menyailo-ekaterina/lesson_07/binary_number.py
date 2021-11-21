@@ -5,7 +5,6 @@ def as_binary_string(n):
         return "-" + as_binary_string(-n)
 
     if n == 0 or n == 1:
-
         return str(n)
 
     last_digit = n % 2
