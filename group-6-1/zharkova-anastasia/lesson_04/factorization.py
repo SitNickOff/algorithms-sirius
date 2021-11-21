@@ -12,10 +12,35 @@
 # Формат вывода
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
+def simple(b):
+    k = 0
+    for i in range(2,int(b**1/2)+1):
+        if b % i == 0:
+            k+=1
+            return True
+    if k == 0:
+        return False
+        
 def factorizate(n):
-    
-    return [n]
-
+    array = [ ]
+    if simple(n) == False:          
+        return [n]                   
+    elif simple(n) == True:
+        while n > 0:
+            print(n)
+            print(array)
+            if n % 2 == 0:
+                array.append(2)
+                n //= 2
+            elif n % 3 == 0:
+                array.append(3)
+                n //= 3
+            elif n % 5 == 0:
+                array.append(5) 
+                n //= 5
+            if n == 1:
+                break
+        return array
 
 def test(n, result):
     if factorizate(n) != result:

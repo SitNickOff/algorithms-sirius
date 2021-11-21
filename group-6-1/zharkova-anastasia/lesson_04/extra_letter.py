@@ -8,10 +8,32 @@
 # Формат вывода
 # Выведите лишнюю букву.
 
-def extra_letter(s, t):
-
-    return 'e'
-
+def extra_letter(s,t):      
+    vs = []             
+    vt = []
+    for i in range(len(s)):
+        vs.append(s[i])
+    for i in range(len(t)):
+        vt.append(t[i])
+    vs.sort()           
+    vt.sort()
+    i = 0
+    if len(s) > len(t):         
+        vt.append(" ")         
+        while i < len(s):
+            if vs[i] != vt[i]:      
+                return vs[i]
+            else:
+                i+=1
+    else:
+        vs.append(" ")              
+        while i < len(t):
+            if vs[i] != vt[i]:
+                return vt[i]
+            else:
+                i+=1
+    return "Нет лишней буквы"
+        
 
 def test(s, t, result):
     if extra_letter(s, t) != result:
@@ -22,3 +44,4 @@ def test(s, t, result):
 test('abcd', 'abcde', 'e')
 test('go', 'ogg', 'g')
 test('xtkpx', 'xkctpx', 'c')
+test('abcchd', 'bchda','c')
