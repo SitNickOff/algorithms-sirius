@@ -42,3 +42,66 @@
 # 1 1
 
 # 1
+
+def insertion_sort(array):
+    for i in range(len(array)):
+        item_to_insert = array[i]
+        j = i
+
+        while j > 0 and item_to_insert < array[j - 1]:
+            array[j] = array[j - 1]
+            j -= 1
+
+        array[j] = item_to_insert
+    return array
+
+
+def hungry_child(a, b):
+    statis = list(map(int, b.split()))
+    children = len(statis)
+    coockies = list(map(int, a.split()))
+    quant_cild = len(coockies)
+    pleased = 0
+
+    insertion_sort(statis)
+    insertion_sort(coockies)
+
+    for i in range(len(statis)):
+        item_to_insert = statis[i]
+        j = i
+
+        while j < children and j < quant_cild:
+            print('i', i)
+            print('j', j)
+            print('cildren', children, 'quant', quant_cild)
+            print(statis, coockies)
+            if coockies[i] >= statis[j]:
+                pleased += 1
+                # coockies.pop(i)
+                # statis.pop(j)
+                break
+            elif j < len(b):
+                j += 1
+            else:
+                break
+    return pleased
+
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ищи косяк... {result} != {expected}')
+    else:
+        print('Чудо свершилось - код работает')
+
+
+test(hungry_child('1 2', '3 1 2'), 2)
+test(hungry_child('2 1 3', '1 1'), 1)
+test(hungry_child('9 5 3', '10 2 7 12'), 3)
+
+
+
+
+
+
+
+

@@ -13,36 +13,44 @@
 # Формат вывода
 # Выведите ответ на каждый запрос по одному в строке.
 
-class Node:  
-    def __init__(self, value, next_item = None):  
-        self.value = value  
+class Node:
+    def __init__(self, value, next_item=None):
+        self.value = value
         self.next_item = next_item
 
-class Queue:  
-    def __init__(self):  
+
+class Queue:
+    def __init__(self):
         self.size = 0
         self.header = None
         self.tail = None
 
     def size(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        return self.size
 
     def get(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if self.size == 0:
+            return 'error'
+        self.size -= 1
+        new_head = self.header
+        self.header = self.next_item
+        return new_head
 
     def put(self, value):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if self.size == 0:
+            self.header = value
+            self.tail = value
+        else:
+            self.next_item = self.header
+            self.header = value
+        self.size += 1
+
 
 def worker(commands):
     #  Your code
     #  “ヽ(´▽｀)ノ”
     pass
+
 
 # count_commands = int(input())
 # commands = []
@@ -57,6 +65,7 @@ def test(result, expected):
         print(f'Ошибка: {result} != {expected}')
     else:
         print('Ok!')
+
 
 test(
     worker(['put -34', 'put -23', 'get', 'size', 'get', 'size', 'get', 'get', 'put 80', 'size']),
