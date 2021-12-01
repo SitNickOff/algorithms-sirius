@@ -36,7 +36,6 @@ def two_sum_optimized(numbers, sum_):
             k +=1
             continue
     
-
 numbers = list(map(int, input('Введите числа в массив ').split()))
 sum_ = int(input('Введите сумму, которую ищем '))
 print('primary', two_sum_primary(numbers, sum_))
