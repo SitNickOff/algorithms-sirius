@@ -18,7 +18,6 @@ def extra_letter(s, t):
             t = t[:t.find(i)] + t[t.find(i) + 1:]
     return t
 
-
 def test(s, t, result):
     if extra_letter(s, t) != result:
         print('Ошибка! Ожидали: ', result, ' -  Получили: ', extra_letter(s, t))

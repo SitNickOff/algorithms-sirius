@@ -25,7 +25,6 @@ def factorizate(n):
             i += 1
     return num
 
-
 def test(n, result):
     if factorizate(n) != result:
         print('Ошибка! Ожидали: ', result, ' -  Получили: ', factorizate(n))
