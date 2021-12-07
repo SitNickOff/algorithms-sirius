@@ -12,9 +12,20 @@
 # Формат вывода
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
-def factorizate(n):
+def factorizate(n): #Факторизация числа методом перебора делителей
+    loop=2
+    flist=[]
+    while loop<=n: #Перебор всех целых чисел от 2
+        if n%loop==0: #Если остаток от деления равен нулю, то число является делителем
+            n//=loop
+            flist.append(loop)
+        else:
+            loop+=1
+    return flist
+
     
-    return [n]
+print(factorizate(180))  
+  
 
 
 def test(n, result):
@@ -26,3 +37,4 @@ def test(n, result):
 test(8, [2, 2, 2])
 test(13, [13])
 test(100, [2, 2, 5, 5])
+
