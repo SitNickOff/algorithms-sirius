@@ -29,3 +29,27 @@
 # 2
 # (())
 # ()()
+
+
+def gen(n, counter_open, counter_close, ans):
+    if counter_open + counter_close == 2 * n:
+        print(ans)
+        return
+    if counter_open < n:
+        gen(n, counter_open + 1, counter_close, ans + '(')
+        print(ans)
+    if counter_open > counter_close:
+        gen(n, counter_open, counter_close + 1, ans + ')')
+        print(ans)
+
+# # gen(2, 0, 0, '')
+gen(3, 0, 0, '')
+# gen(4, 0, 0, '')
+
+# def test(result, expected):
+#     if result != expected:
+#         print(f'Ищи косяк... {result} != {expected}')
+#     else:
+#         print('Чудо свершилось - код работает')
+
+# test(gen(3, 0, 0, ''), '(())')

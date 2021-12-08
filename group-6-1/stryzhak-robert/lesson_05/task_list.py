@@ -11,11 +11,7 @@ class Node:
 
 # Необходимо заменить pass на Ваш код
 def solution(node):
-    while node:
-        print(node.value)
-        node = node.next_item
-
-
+    pass 
 
 def test():
     task5 = Node("Реализовать операцию вывода на печать текущие задания в обратном порядке", None)
