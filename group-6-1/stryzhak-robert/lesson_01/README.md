@@ -2,7 +2,7 @@
 
 ### Задачи занятия № 01: Установка оружения
 
-- [ ] Установил Git
+- [X] Установил Git
 - [ ] Установил Python
 - [ ] Установил Visual Studio Code
 - [ ] Установил Plugin Python для Visiual Studio Code
