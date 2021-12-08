@@ -12,17 +12,15 @@
 # Формат вывода
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
-def factorizate(n):
-    
-    return [n]
-
-
-def test(n, result):
-    if factorizate(n) != result:
-        print('Ошибка! Ожидали: ', result, ' -  Получили: ', factorizate(n))
-    else:
-        print('Отлично: ', result, '==', factorizate(n))
-
-test(8, [2, 2, 2])
-test(13, [13])
-test(100, [2, 2, 5, 5])
+def primfacs(n):
+   i = 2
+   primfac = []
+   while i * i <= n:
+       while n % i == 0:
+           primfac.append(i)
+           n = n / i
+       i = i + 1
+   if n > 1:
+       primfac.append(int(n))
+   print(primfac)
+   return primfac
