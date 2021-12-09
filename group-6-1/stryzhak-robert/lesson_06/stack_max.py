@@ -42,9 +42,9 @@ def worker(commands):
     stack = StackMaxEffective()
     for command in commands:
         if command == 'pop':
-            result_pop = stack.pop()
+            
             if result_pop == 'error':
-                result.append(result_pop)
+                result.append('error')
                 
         elif command == 'get_max':
             result.append(stack.get_max())
