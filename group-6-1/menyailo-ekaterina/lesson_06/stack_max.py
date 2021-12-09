@@ -19,25 +19,26 @@
 
 class StackMaxEffective:
     def __init__(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        self.items = []
 
     def push(self, item):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
-        
+        self.items.append(item)
+
 
     def pop(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        return self.items.pop()
+
+    def peak(self):
+        return self.items[-1]
+
+    def size(self):
+        return len(self.items)
 
     def get_max(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        for i in range(len(self.items)):
+            if self.items[i] > self.items[i+1]:
+                self_max = self.items[i]
+        return self_max
 
 
 def worker(commands):
@@ -66,4 +67,4 @@ test(
 test(
     worker(['get_max', 'push -6', 'pop', 'pop', 'get_max', 'push 2', 'get_max', 'pop', 'push -2', 'push -6']),
     [None, 'error', None, 2]
-)
+) 
