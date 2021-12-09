@@ -30,7 +30,8 @@ class StackMaxEffective:
         if len(self.stack) == 0:
             self.stack_new.append('error')
         else:
-            rel = self.stack.pop()
+            self.stack.pop()
+            
             
             
 
