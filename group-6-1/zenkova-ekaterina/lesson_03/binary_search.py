@@ -24,7 +24,7 @@ def binary_search(numbers, x):
         mid = (zero+lent)//2
     if zero > lent:
         return -1
-    else:
+    else: 
         return mid
 
 list_num = list(map(int, input("Задайте список: ").split())) 

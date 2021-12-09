@@ -26,7 +26,7 @@ def two_sum_optimized(numbers, summ):
     if (0 in s) and (summ in s):        
         return [0, summ]               
     i = n = 0
-    k = 1
+    k = 1 
     while i < len(s):                     
         if (s[i] + s[i + k]) == summ:        
             return [s[i],s[i + k]]
