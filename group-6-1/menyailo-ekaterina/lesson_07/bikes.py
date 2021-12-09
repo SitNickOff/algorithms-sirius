@@ -49,3 +49,23 @@
 # 10
 
 # -1 -1
+def search(num, x, low=0, high=None,):
+    if high == None:
+        high = len(num) - 1
+    if low > high:
+        return -1
+
+
+    mid = (low + high) // 2
+    # print(mid)
+    # print(high)
+    if num[mid] == x:
+        print(num[mid])
+        return mid
+    elif num[mid] > x:
+        search(num, x, low, mid-1)
+    elif num[mid] < x:
+        search(num, x, mid+1, high)
+
+
+print(search([3, 6, 7, 9, 10, 13, 16], 10)) 
