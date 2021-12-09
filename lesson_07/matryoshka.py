@@ -6,5 +6,4 @@ def build_matryoshka(size, n):
     else:
         return
 
-
 build_matryoshka(7, 7)
