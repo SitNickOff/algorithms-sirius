@@ -20,42 +20,50 @@
 class StackMaxEffective:
     def __init__(self):
         self.items = []
+        self.maximum = [] 
+        self.size = 0        
 
-    def push(self, item):
+    def push(self, item):               
         self.items.append(item)        
+        if len(self.maximum) == 0:
+            self.maximum.append(item)
+        elif item > self.maximum[self.size - 1]:
+            self.maximum.append( item )
+        else:
+            self.maximum.append( self.maximum[self.size - 1] )
+        self.size += 1 
+        print(f'size: {self.size} - {self.items} - {self.maximum}')
+           
 
     def pop(self):
+        
         if len(self.items) == 0:
             return 'error'
         else:
+            self.size -= 1
+            self.maximum.pop()
             return self.items.pop()
         
 
     def get_max(self):
+        
         if len(self.items) == 0:
             return None
         else:
-            return max(self.items)
+            return self.maximum[self.size-1]
     
 def worker(commands):
     result = []
     stack = StackMaxEffective()
+    
     for command in commands:
         if command == 'pop':
-            
-            if result_pop == 'error':
-                result.append('error')
-                
+            if stack.pop() == 'error':
+                result.append('error')                
         elif command == 'get_max':
             result.append(stack.get_max())
         else:
-            command_push, num = command.split(' ')
-            num = int(num)
-            stack.push(num)
-    print(stack.items)
-    
-        
-    # result.append()
+            stack.push(int(command.split(' ')[1]))
     
     return result
     
