@@ -19,55 +19,51 @@
 
 class StackMaxEffective:
     def __init__(self):
-        self.stack = []
-        self.stack_new = []
-        self._max = -10000
-    
-    def push(self, item):
-        self.stack.append(int(item))
+        self.items = []
+        self.maxx = []
         
-    def pop(self):
-        if len(self.stack) == 0:
-            self.stack_new.append('error')
+
+    def push(self, item):
+        self.items.append(item)
+        
+        if len(self.maxx) == 0:
+            self.maxx.append(item)
         else:
-            self.stack.pop()
-            
-            
-            
+            if item > self.maxx[len(self.maxx)-1]:
+                self.maxx.append(item)
+            else:
+                self.maxx.append(self.maxx[len(self.maxx)-1])
+        
+
+    def pop(self):
+        if len(self.items) == 0:
+            return "error"
+        else:
+            self.maxx.pop()
+            return self.items.pop()
+
 
     def get_max(self):
-        if len(self.stack) == 0:
-            self.stack_new.append(None)
+        if len(self.maxx) == 0:
+            return None
         else:
-            for i in range(len(self.stack)):
-                if int(self.stack[i]) > int(self._max):
-                    self._max = self.stack[i]
-            self.stack_new.append(self._max)
-    def __get__(self):
-        return self.stack_new
-
+            return self.maxx[len(self.maxx)-1]
+        
 
 def worker(commands):
-    commandes = StackMaxEffective()
-    for i in range(len(commands)):
-        if ' ' in commands[i]:
-            command, number = commands[i].split()
-        else: command = commands[i]
-        if command == 'push':
-            commandes.push(number)
+    res = []
+    stack = StackMaxEffective()
+    
+    for command in commands:
         if command == 'pop':
-            commandes.pop()
-        if command == 'get_max':
-            commandes.get_max()
-    return commandes.__get__()
+            if stack.pop() == 'error':
+                res.append('error')
+        elif command == 'get_max':
+            res.append(stack.get_max())
+        else:
+            stack.push(int(command.split()[1]))
+    return res
 
-# n = int(input())
-# commands = []
-# for i in range(n):
-#     commands.append(input())
-
-# for result in worker(commands):
-#     print(result)
 
 def test(result, expected):
     if result != expected:
