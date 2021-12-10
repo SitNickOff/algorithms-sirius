@@ -19,13 +19,19 @@ class DoubleConnectedNode:
 
 def print_linked_list(vertex):
     while vertex:
-        print(vertex.value, end=" -> ")
+        print(vertex.value, end = " -> ")
         vertex = vertex.next
     print("None")
 
 # Необходимо заменить pass на Ваш код
 def solution(node):
-    pass
+    while node.next != None:
+        node = node.next
+        # index -= 1
+    while node:
+        print(node.value, end = " -> ")
+        node = node.prev
+    print("None")
 
 def test():
     task5 = DoubleConnectedNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")
