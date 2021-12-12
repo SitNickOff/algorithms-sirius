@@ -4,7 +4,10 @@
 # Ограничение памяти	121Mb	121Mb
 # Ввод	стандартный ввод или input.txt
 # Вывод	стандартный вывод или output.txt
-# Вася решил накопить денег на два одинаковых велосипеда — себе и сестре. У Васи есть копилка, в которую каждый день он может добавлять деньги (если, конечно, у него есть такая финансовая возможность). В процессе накопления Вася не вынимает деньги из копилки.
+
+# Вася решил накопить денег на два одинаковых велосипеда — себе и сестре. У Васи есть копилка, 
+# в которую каждый день он может добавлять деньги (если, конечно, у него есть такая финансовая возможность). 
+# В процессе накопления Вася не вынимает деньги из копилки.
 
 # У вас есть информация о росте Васиных накоплений — сколько у Васи в копилке было денег в каждый из дней.
 
@@ -49,3 +52,37 @@
 # 10
 
 # -1 -1
+
+def bike(days,array,price, answer = [-1,-1]):
+    price_2 =  2 * price
+    lenth = days - len(array)
+
+    if lenth == 0:
+        answer = [-1,-1]
+    if days - len(array) == len(array) :
+        return answer
+
+    else:
+        if array[lenth] - price_2 >= 0 and answer[1] == -1:
+            answer[1] = lenth + 1  
+            if -1 in answer:
+                return bike(days + 1, array, price, answer)
+            else:
+                return answer
+
+        elif array[lenth] - price >= 0 and answer[0] == -1:
+            answer[0] = lenth + 1  
+            if -1 in answer:
+                return bike(days + 1, array, price, answer)
+            else:
+                return answer 
+
+        else:
+            return bike(days + 1, array, price, answer)
+
+
+days = int(input('Количество дней: '))
+array = list(map(int, input('Накопления по дням: ').split()))
+price = int(input('Цена велосипеда: '))
+
+print('дни покупки: ', bike(days,array,price))
