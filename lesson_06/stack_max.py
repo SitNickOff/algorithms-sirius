@@ -21,7 +21,6 @@ class StackMaxEffective:
     def __init__(self):
         self.items = []
         self.maxx = []
-        
 
     def push(self, item):
         self.items.append(item)
@@ -53,7 +52,6 @@ class StackMaxEffective:
 def worker(commands):
     res = []
     stack = StackMaxEffective()
-    
     for command in commands:
         if command == 'pop':
             if stack.pop() == 'error':

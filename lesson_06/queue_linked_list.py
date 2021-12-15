@@ -18,28 +18,25 @@
 class Stack:
     def __init__(self):
         self.stack = []
-        self.stack_new=[]
 
     def get(self):
         if len(self.stack) == 0:
-            self.stack_new.append('error')
+            return 'error'
         else: 
             removed = int(self.stack.pop(0))
-            self.stack_new.append(removed)
+            return removed
 
     def put(self, item):
         self.stack.append(item)
     
     def size(self):
-        self.stack_new.append(len(self.stack))
+        return len(self.stack)
 
-    def __get__(self):
-        return self.stack_new
 
    
 def worker(commands):
-    
     commandes = Stack()
+    result = []
     for i in range(len(commands)):
         if ' ' in commands[i]:
             command, number = commands[i].split()
@@ -47,11 +44,11 @@ def worker(commands):
         if command == 'put':
             commandes.put(number)
         if command == 'get':
-            commandes.get()
+            result.append(commandes.get())
         if command == 'size':
-            commandes.size()
-    return commandes.__get__()
-
+            result.append(commandes.size())
+    return result
+    
 # count_commands = int(input())
 # commands = []
 # for i in range(count_commands):
