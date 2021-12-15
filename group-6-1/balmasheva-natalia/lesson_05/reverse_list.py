@@ -31,7 +31,6 @@ def solution(node):
     while node:
         print(node.value, end = " -> ")
         node = node.prev
-    print("None")
 
 def test():
     task5 = DoubleConnectedNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")
