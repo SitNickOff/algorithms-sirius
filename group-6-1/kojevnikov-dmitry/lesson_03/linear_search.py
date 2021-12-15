@@ -4,4 +4,6 @@
 # Решить задачу применяя алгоритм бинарного поиска
 
 def linear_search(numbers, x):
-    return -1
+    for i in numbers:
+        if i == x:
+            return i
