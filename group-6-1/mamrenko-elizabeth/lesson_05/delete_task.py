@@ -7,8 +7,8 @@
 # элемента и возвращает голову обновлённого списка.
 
 class Node:  
-    def __init__(self, value, next_item=None):  
-        self.value = value  
+    def init(self, value, next_item=None):
+        self.value = value
         self.next_item = next_item
 
 def get_node_by_index(node, index):
@@ -21,12 +21,21 @@ def print_linked_list(vertex):
     while vertex:
         print(vertex.value, end=" -> ")
         vertex = vertex.next_item
-    print("None") 
+    print("None")
 
 # Необходимо заменить pass на Ваш код
 def solution(node, idx):
-    pass
-
+    if idx == 0:
+        newHead = node.next_item
+        node.next_item = None
+        return  newHead
+    head = node
+    for i in range(idx - 1):
+        node = node.next_item
+    newCh = node.next_item.next_item
+    node.next_item.next_item = None
+    node.next_item = newCh
+    return head
 def test():
     task5 = Node("Реализовать операцию вывода на печать текущие задания в обратном порядке", None)
     task4 = Node("Реализовать операцию удаления элемента из списка", task5)

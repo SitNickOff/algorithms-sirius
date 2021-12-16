@@ -5,13 +5,15 @@
 # Нужно написать только функцию, которая принимает на вход голову списка и печатает его элементы. 
 
 class Node:  
-    def __init__(self, value, next_item=None):  
-        self.value = value  
+    def init(self, value, next_item=None):
+        self.value = value
         self.next_item = next_item
 
 # Необходимо заменить pass на Ваш код
 def solution(node):
-    pass 
+    while node != None:
+        print(node.value)
+        node = node.next_item
 
 def test():
     task5 = Node("Реализовать операцию вывода на печать текущие задания в обратном порядке", None)
