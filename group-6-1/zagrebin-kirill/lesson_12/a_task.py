@@ -15,13 +15,23 @@
 # в которые ведут эти рёбра –— в порядке возрастания их номеров.
 
 def solution(n, m, edges):
-    pass
+    result = list()
+    for i in range(n):
+        result.append([0])
+
+    for edge in edges:
+        result[edge[0] - 1].append(edge[1])
+        result[edge[0] - 1][0] += 1
+
+    return result
+
 
 def test(result, expected):
     if result != expected:
         print(f'error: {result} != {expected}')
 
+
 test(
-    solution(5, 3, [[1, 3], [2, 3], [5, 2]]), 
+    solution(5, 3, [[1, 3], [2, 3], [5, 2]]),
     [[1, 3], [1, 3], [0], [0], [1, 2]]
 )
