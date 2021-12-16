@@ -29,3 +29,15 @@
 # 2
 # (())
 # ()()
+
+def gen(count, s = '', left = 0, right = 0):
+    if left == count and right == count:
+        print(s)
+    else:
+        if left < count:
+            gen(count, s + '(', left + 1, right)
+        if right < left:
+            gen(count, s + ')', left, right +1)
+
+n = int(input('Введите длину ПСП: '))
+gen(n)
