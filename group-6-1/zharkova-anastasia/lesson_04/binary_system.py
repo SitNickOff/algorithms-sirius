@@ -28,33 +28,31 @@
 # Вывод:
 # 10
 
-def add(b1, b2):
-    b22 = b2[::-1]
-    binary = ''
-    j = 0
-    sum = 0
-    for i, value in enumerate(b1[::-1], 0):
-        sum = int(value) + int(b22[i]) + j
-        if sum < 2:
-            binary = str(sum) + binary
-            j = 0
-        elif j > 0:
-            binary = '1' + binary
-            j -=1
-        elif j == 0:
-            binary = '0' + binary
-            j +=1
-    while j != 0:
-         binary = '1' + binary
-         j -= 1
+def binary_system(a, b):
 
-    return binary
+    if len(a) > len(b):
+        a, b = b, a 
 
-def test(b1, b2, result):
-    if add(b1, b2) != result:
-        print('Ошибка! Ожидали: ', result, ' -  Получили: ', add(b1, b2))
+    la, lb = len(a), len(b)
+    a = '0' * (lb - la) + a 
+    add_one = 0 
+    result = ''
+
+    for i in range(lb - 1, -1, -1):
+        s = int(a[i]) + int(b[i]) + add_one
+        add_one, s = divmod(s, 2)
+        result += str(s)
+
+    if add_one == 1: 
+        result += '1'
+    return result[::-1]
+
+def test(a, b, result):
+    if binary_system(a, b) != result:
+        print('Ошибка! Ожидали: ', result, ' -  Получили: ', binary_system(a, b))
     else:
-        print('Отлично: ', result, '==', add(b1, b2))
+        print('Отлично: ', result, '==', binary_system(a, b))
 
 test('1010', '1011', '10101')
 test('1', '1', '10')
+test('10', '1', '11')
