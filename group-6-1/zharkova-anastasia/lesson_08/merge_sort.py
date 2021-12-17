@@ -29,16 +29,38 @@
 # Реализуйте эти две функции.
 
 def merge(arr, lf, mid, rg):
-	# Your code
-	# “ヽ(´▽｀)ノ”
-	pass
-
+    left = arr[lf:mid]
+    right = arr[mid:rg]
+    k = lf
+    i = 0
+    j = 0
+    while (lf + i < mid and mid + j < rg):
+        if (left[i] <= right[j]):
+            arr[k] = left[i]
+            i = i + 1
+        else:
+            arr[k] = right[j]
+            j = j + 1
+        k = k + 1
+    if lf + i < mid:
+        while k < rg:
+            arr[k] = left[i]
+            i = i + 1
+            k = k + 1
+    else:
+        while k < rg:
+            arr[k] = right[j]
+            j = j + 1
+            k = k + 1
 
 def merge_sort(arr, lf, rg):
-	# Your code
-	# “ヽ(´▽｀)ノ”
-	pass
 
+    if rg - lf > 1:
+        mid = (lf + rg)//2
+        merge(arr, lf, mid)
+        merge_sort(arr, mid, rg)
+        merge(arr, lf, mid, rg)
+ 
 def test():
 	a = [1, 4, 9, 2, 10, 11]
 	b = merge(a, 0, 3, 6)
@@ -48,3 +70,13 @@ def test():
 	merge_sort(c, 0 , 6)
 	expected = [1, 1, 2, 2, 4, 10]
 	assert c == expected
+
+test()
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
+
+test(merge([1, 4, 9, 2, 10, 11], merge(a, 0, 3, 6)), ' ad ae af bd be bf cd ce cf')
