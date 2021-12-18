@@ -13,60 +13,60 @@
 # Формат вывода
 # Выведите ответ на каждый запрос по одному в строке.
 
-class Node:  
-    def __init__(self, value, next_item = None):  
-        self.value = value  
-        self.next_item = next_item
-
-class Queue:  
-    def __init__(self):  
+class Queue:
+    def __init__(self, n) -> None:
+        self.queue = [None] * n
+        self.max_n = n
+        self.head = 0
+        self.tail = 0
         self.size = 0
-        self.header = None
-        self.tail = None
 
-    def size(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
 
-    def get(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+    def is_empty(self):
+            return self.size == 0
 
-    def put(self, value):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+    def push(self, x):
+        if self.size != self.max_n:
+            self.queue[self.tail] = x
+            self.tail = (self.tail + 1) % self.max_n
+            self.size += 1
 
-def worker(commands):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
-
-# count_commands = int(input())
-# commands = []
-# for i in range(count_commands):
-#     commands.append(input())
-
-# for result in worker(commands):
-#     print(result)
-
+    def pop(self):
+        self.queue[self.head] = None
+        self.head = (self.head + 1) % self.max_n
+        self.size -= 1
+        
 def test(result, expected):
     if result != expected:
         print(f'Ошибка: {result} != {expected}')
     else:
-        print('Ok!')
+        print("OK")
 
-test(
-    worker(['put -34', 'put -23', 'get', 'size', 'get', 'size', 'get', 'get', 'put 80', 'size']),
-    [-34, 1, -23, 0, 'error', 'error', 1]
-)
-test(
-    worker(['put -66', 'put 98', 'size', 'size', 'get', 'get']),
-    [2, 2, -66, 98]
-)
-test(
-    worker(['get', 'size', 'put 74', 'get', 'size', 'put 90', 'size', 'size', 'size']),
-    ['error', 0, 74, 0, 1, 1, 1]
-)
+def full_test():
+    q = Queue(8) 
+    test(q.queue, [None, None, None, None, None, None, None, None])
+
+    q.push(1)
+    test(q.queue, [1, None, None, None, None, None, None, None])
+    test(q.size, 1) 
+    q.push(-1)
+    q.push(0)
+    q.push(11)
+    test(q.queue, [1, -1, 0, 11, None, None, None, None])
+    test(q.size, 4)
+
+    q.pop()
+    test(q.queue, [None, -1, 0, 11, None, None, None, None])
+    test(q.size, 3)
+
+    q.pop()
+    q.pop()
+    q.push(-8)
+    q.push(7)
+    q.push(3)
+    q.push(16)
+    test(q.queue, [None, None, None, 11, -8, 7, 3, 16])
+    test(q.size, 5)
+    q.push(12)
+    test(q.queue, [12, None, None, 11, -8, 7, 3, 16])
+    test(q.size, 6)
