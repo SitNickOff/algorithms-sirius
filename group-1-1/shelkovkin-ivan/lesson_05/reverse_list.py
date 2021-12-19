@@ -25,8 +25,13 @@ def print_linked_list(vertex):
 
 # Необходимо заменить pass на Ваш код
 def solution(node):
-    pass
-
+    while node.next != None:
+        node = node.next
+        # index -= 1
+    while node:
+        print(node.value, end=" -> ")
+        node = node.prev
+    print("None")
 def test():
     task5 = DoubleConnectedNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")
     task4 = DoubleConnectedNode("Реализовать операцию удаления элемента из списка")
