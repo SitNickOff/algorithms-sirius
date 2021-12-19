@@ -15,7 +15,16 @@
 # в которые ведут эти рёбра –— в порядке возрастания их номеров.
 
 def solution(n, m, edges):
-    pass
+    vs = [[0] for i in range(n)]
+
+    for j in edges:
+        vs[j[0]-1][0] += 1
+        vs[j[0]-1].append(j[1])
+
+    return vs
+
+
+
 
 def test(result, expected):
     if result != expected:
