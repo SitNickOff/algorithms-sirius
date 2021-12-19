@@ -33,3 +33,43 @@
 
 # Вывод:
 # 1 2 
+
+n = 4
+m = 4
+colors = ['white'] * n
+# distance = [None] * n
+# previous = [None] * n
+
+def solution(n, m, edges):
+    vs = []
+    for i in range(n):
+        vs.append([])
+    
+    for e in edges:
+        vs[e[0]-1].append(e[1])
+        vs[e[1]-1].append(e[0])
+    
+    return vs
+
+def DFS(graph, s, order = [], visited = []):
+    visited = [False] * len(graph)
+    order.append(s)
+    print(f'graph[s-1]: {graph[s-1]}')
+    visited[s-1] = True
+    
+    for e in graph[s-1]:
+        print(e)
+        if not visited[e-1]:
+            DFS(graph, e, order, visited)
+        
+    print(f'graph: {graph}')    
+    print(f'visited: {visited}')
+
+    return order
+
+def test(result, expected):
+    if result != expected:
+        print(f'error: {result} != {expected}')    
+        
+graph = solution(n, m, [[1, 2], [2, 3], [3, 4], [1, 4]])
+test(DFS(solution(4, 4, [[1, 2], [2, 3], [3, 4], [1, 4]]), 3), [3, 2, 4, 1])

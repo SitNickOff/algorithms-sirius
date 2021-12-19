@@ -33,3 +33,34 @@
 # 1
 # Вывод:
 # 1 2 
+
+n = 4
+m = 4
+colors = ['white'] * n
+# distance = [None] * n
+# previous = [None] * n
+
+def solution(n, m, edges):
+    vs = []
+    for i in range(n):
+        vs.append([0])
+    
+    for e in edges:
+        vs[e[0]-1][0] += 1
+        vs[e[0]-1].append(e[1])
+    
+        # print(f'e: {e}')
+        # print(f'vs[e[0]-1]: {vs[e[0]-1]}')
+    
+    # print(f'vs: {vs}')
+    return vs
+
+graph = solution(n, m, [[1, 2], [2, 3], [3, 4], [1, 4]])
+
+def BFS(s):
+     planned = []
+     planned.append(s)
+     print(f'planned: {planned}')
+
+print(graph)
+BFS(1)
