@@ -13,16 +13,23 @@
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
 def factorizate(n):
-    
-    return [n]
-
+    result = []
+    d = 2
+    while d * d <= n:
+        if n % d == 0:
+            result.append(d)
+            n //= d
+        else:
+            d += 1
+    if n > 1:
+        result.append(n)
+    return result
 
 def test(n, result):
     if factorizate(n) != result:
         print('Ошибка! Ожидали: ', result, ' -  Получили: ', factorizate(n))
     else:
         print('Отлично: ', result, '==', factorizate(n))
-
 test(8, [2, 2, 2])
 test(13, [13])
 test(100, [2, 2, 5, 5])
