@@ -22,9 +22,37 @@
 # Выведите «True» или «False».
 
 def is_correct_bracket_seq(string):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
+    new_string = ''
+    dict = {
+        '(' : ')',
+        '{' : '}',
+        '[' : ']'
+    }
+
+    for i in string:
+        if (i == '(') or (i == '{') or (i == '['):
+            print(i)
+            new_string = new_string + dict[i]
+            string = string[:string.find(i)] + string[string.find(i) + 1:] 
+
+    print(string, new_string)
+
+    # if string == new_string[::-1]:
+    #     return True
+    # else:
+    #     return False
+
+    for i in string:
+        if (i in new_string) == True:
+            # print('str', string, 'nstr', new_string)
+            string = string[:string.find(i)] + string[string.find(i) + 1:]
+            new_string = new_string[:new_string.find(i)] + new_string[new_string.find(i) + 1:]
+            # print('str2', string, 'nstr2', new_string)
+    
+    if (len(string) > 0) or (len(new_string) > len(string)):
+        return False
+    else:
+        return True
 
 # print(is_correct_bracket_seq(str(input())))
   
@@ -38,5 +66,5 @@ test(is_correct_bracket_seq('{[()]}'), True)
 test(is_correct_bracket_seq('{[]}()'), True)
 test(is_correct_bracket_seq('{[]}([)]'), False)
 test(is_correct_bracket_seq('()'), True)
-
-
+test(is_correct_bracket_seq('{[[}}]]}([)]'), False)
+test(is_correct_bracket_seq('{[{[}]}([)]'), False)

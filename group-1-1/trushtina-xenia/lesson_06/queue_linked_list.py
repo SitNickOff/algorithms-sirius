@@ -25,20 +25,25 @@ class Queue:
         self.tail = None
 
     def size(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        return self.size
 
     def get(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if self.size == 0:
+            return 'error'
+        self.size -= 1
+        new_head = self.header
+        self.header = self.next_item
+        return new_head
 
     def put(self, value):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
-
+        if self.size == 0:
+            self.header = value
+            self.tail = value
+        else:
+            self.next_item = self.header
+            self.header = value
+        self.size +=1
+            
 def worker(commands):
     #  Your code
     #  “ヽ(´▽｀)ノ”
