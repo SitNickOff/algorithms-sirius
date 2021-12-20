@@ -8,17 +8,12 @@
 # Формат вывода
 # Выведите лишнюю букву.
 
-def extra_letter(s, t):
-
-    return 'e'
-
-
-def test(s, t, result):
-    if extra_letter(s, t) != result:
-        print('Ошибка! Ожидали: ', result, ' -  Получили: ', extra_letter(s, t))
-    else:
-        print('Отлично: ', result, '==', extra_letter(s, t))
-
-test('abcd', 'abcde', 'e')
-test('go', 'ogg', 'g')
-test('xtkpx', 'xkctpx', 'c')
+def less4ExtraLetter():
+    a = input("a: ")
+    b = input("b: ")
+    a = [x for x in a]
+    b = [x for x in b]
+    for el in b:
+        if a.count(el) != b.count(el):
+            print(el)
+            return el
