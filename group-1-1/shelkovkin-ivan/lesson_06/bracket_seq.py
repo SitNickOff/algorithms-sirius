@@ -21,22 +21,36 @@
 # Формат вывода
 # Выведите «True» или «False».
 
+openList = ["[", "{", "("]
+closeList = ["]", "}", ")"]
+
+
 def is_correct_bracket_seq(string):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
+    stack = []
+    for i in string:
+        if i in openList:
+            stack.append(i)
+        elif i in closeList:
+            pos = closeList.index(i)
+            if (len(stack) > 0) and (openList[pos] == stack[len(stack) - 1]):
+                stack.pop()
+            else:
+                return False
+    if len(stack) == 0:
+        return True
+
 
 # print(is_correct_bracket_seq(str(input())))
-  
+
 def test(result, expected):
     if result != expected:
         print(f'Ошибка: {result} != {expected}')
     else:
         print('Ok!')
 
+
 test(is_correct_bracket_seq('{[()]}'), True)
 test(is_correct_bracket_seq('{[]}()'), True)
 test(is_correct_bracket_seq('{[]}([)]'), False)
 test(is_correct_bracket_seq('()'), True)
-
 
