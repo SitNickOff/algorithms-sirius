@@ -12,16 +12,24 @@
 # Формат вывода
 # Выведите в порядке неубывания простые множители, на которые раскладывается число n.
 
-def factorizate(n):
-    
-    return [n]
-
+def factorization(n):
+    i = 2
+    num = []
+    while (n != 1) or (n == i):
+        if n % i == 0:
+            n = n / i
+            num.append(i)
+            i = 2
+            print(num)
+        else:
+            i += 1
+    return num
 
 def test(n, result):
-    if factorizate(n) != result:
-        print('Ошибка! Ожидали: ', result, ' -  Получили: ', factorizate(n))
+    if factorization(n) != result:
+        print('Ошибка! Ожидали: ', result, ' -  Получили: ', factorization(n))
     else:
-        print('Отлично: ', result, '==', factorizate(n))
+        print('Отлично: ', result, '==', factorization(n))
 
 test(8, [2, 2, 2])
 test(13, [13])
