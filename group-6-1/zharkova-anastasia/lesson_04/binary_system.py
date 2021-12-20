@@ -28,16 +28,31 @@
 # Вывод:
 # 10
 
-def add(b1, b2):
-    binary = '0'
+def binary_system(a, b):
 
-    return binary
+    if len(a) > len(b):
+        a, b = b, a 
 
-def test(b1, b2, result):
-    if add(b1, b2) != result:
-        print('Ошибка! Ожидали: ', result, ' -  Получили: ', add(b1, b2))
+    la, lb = len(a), len(b)
+    a = '0' * (lb - la) + a 
+    add_one = 0 
+    result = ''
+
+    for i in range(lb - 1, -1, -1):
+        s = int(a[i]) + int(b[i]) + add_one
+        add_one, s = divmod(s, 2)
+        result += str(s)
+
+    if add_one == 1: 
+        result += '1'
+    return result[::-1]
+
+def test(a, b, result):
+    if binary_system(a, b) != result:
+        print('Ошибка! Ожидали: ', result, ' -  Получили: ', binary_system(a, b))
     else:
-        print('Отлично: ', result, '==', add(b1, b2))
+        print('Отлично: ', result, '==', binary_system(a, b))
 
 test('1010', '1011', '10101')
 test('1', '1', '10')
+test('10', '1', '11')
