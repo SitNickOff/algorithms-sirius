@@ -116,32 +116,61 @@ def merge_sort(arr, lf, rg):
 
 print(merge_sort([7, 3, 9, 0, 25], 0, 5))
 
-def partition(array, pivot):
-    less = [] # элементы array, меньшие pivot
-    center = [pivot] # элементы array, равные pivot
-    greater = [] # элементы array, большие pivot
-    return less, center, greater
 
-def quicksort(array):
+
+
+def partition(array, low, high):
+    i = (low - 1)
+    pivot = array[high]
+    
+    for i in range(low, high):
+        if array[i] <= pivot:
+            j = j + 1
+            array[j], array[i] = array[i], array[j]
+    
+    array[i + 1], array[high] = array[high], array[i + 1]
+
+    return (i + 1)
+
+def quicksort(array, low, high):
     if len(array) < 2:  # базовый случай,
         return array       # массивы с 0 или 1 элементами фактически отсортированы
-    else:  # рекурсивный случай
-        random_index = random.randrange(len(array))
-        pivot = array[random_index]
-        less, center, greater = partition(array, pivot)
+    else:  
+        if low <= high:
+            par_index = partition(array, low, high)
 
-        return quicksort(less) + center + quicksort(greater) 
+    quicksort(array, low, par_index - 1)
+    quicksort(array, par_index + 1, high)
+
+array = [45, 2, 11, 40, 12, 8, 6, 1, 0]
+n = len(array)
+quicksort(array, 0, n - 1)
+print("Отсортированный массив: ")
+
+for j in range(n):
+    print("%d" % array[j])
 
 def counting_sort(array, k):
-    counted_values = [0] * k
-    for value in array:
-        counted_values[value] += 1
+    counted_values = [0] * (k + 1)
+    for value in range(len(array)):
+        counted_values[array[value]] = counted_values[array[value]] + 1
 
-    index = 0
-    for value in range(k):
-        for value in counted_values:
-            array[index] = value
-            index += 1 
+    counted_values[0] = counted_values[0] - 1
 
+    for value in range(1, k + 1):
+        counted_values[value] = counted_values[value] + counted_values[value - 1]
 
-# не сделано 3 последних
+    result = [None] * len(array)
+
+    for i in reversed(array):
+        result[counted_values[i]] = i
+        counted_values[i] = counted_values[i] - 1
+
+    return result
+
+array = input('Введите массив: ').split()
+array = [int(x) for x in array]
+largest = max(array)
+sorted_list = counting_sort(array, largest)
+print('Отсортированный массив: ', end = '')
+print(sorted_list)

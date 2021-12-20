@@ -35,3 +35,20 @@
 # 2 4 5 2 10
 
 # 542210
+
+
+def big_number(num):
+    calc = sorted(list(enumerate([n / (10 ** len(str(n)) - 1) for n in num])),
+                  key = lambda x: x[1], reverse = True);
+
+    return int(''.join([str(num[i[0]]) for i in calc]));
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
+
+test(big_number([15, 56, 2]), 56215)
+test(big_number([1, 783, 2]), 78321)
+test(big_number([2, 4, 5, 2, 10]), 542210)
