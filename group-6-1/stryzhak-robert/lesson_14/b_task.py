@@ -20,12 +20,28 @@
 # Далее выведите время начала и конца каждого урока в отдельной строке в порядке их проведения.
 
 def scheduler(arr):
-    pass
+    all_1 = len(arr)
+    res = 0 
+    res_arr = [0,0]
+    result = []
+    for i in range(all_1):
+        lesson = arr[i]
+        if lesson[0] == lesson[1]:
+            res += 1
+        if lesson[0] > res_arr[1] or lesson[1] < res_arr[0]:
+            res_arr = lesson
+            result.append(res_arr)
+            res += 1
+    return (res,result)
 
-def test():
-    assert scheduler([
+        
+def test(result,expected):
+    if result != expected:
+        print (f'error: {result} != {expected}')
+def test_!():
+    test(scheduler([
         [9, 10], [9.3, 10.3], [10, 11], [10.3, 11.3], [11, 12]
-    ]) == (3, [[9, 10], [10, 11], [11, 12]])
+    ]) == (3, [[9, 10], [10, 11], [11, 12]]))
 
     assert scheduler([
         [9, 10], [11, 12.25], [12.15, 13.30]
@@ -57,18 +73,4 @@ def test():
 
 test()
 
-# def to_num(s):
-#     if s.isnumeric():
-#         return int(s)
-#     return float(s)
-
-# n = int(input())
-# arr = []
-# for i in range(n):
-#     e = list(map(to_num, input().split()))
-#     arr.append(e)
-
-# num, result = scheduler(arr)
-# print(num)
-# for res in result:
-#     print(" ".join(list(map(str, res))))
+#
