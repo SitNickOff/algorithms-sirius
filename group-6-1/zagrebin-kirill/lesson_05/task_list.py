@@ -4,14 +4,18 @@
 # Внимание: в этой задаче не нужно считывать входные данные. 
 # Нужно написать только функцию, которая принимает на вход голову списка и печатает его элементы. 
 
-class Node:  
-    def __init__(self, value, next_item=None):  
-        self.value = value  
+class Node:
+    def __init__(self, value, next_item=None):
+        self.value = value
         self.next_item = next_item
+
 
 # Необходимо заменить pass на Ваш код
 def solution(node):
-    pass 
+    while node:
+        print(node.value)
+        node = node.next_item
+
 
 def test():
     task5 = Node("Реализовать операцию вывода на печать текущие задания в обратном порядке", None)
@@ -28,5 +32,6 @@ def test():
     # Реализовать операцию добавления элемента в список
     # Реализовать операцию удаления элемента из списка
     # Реализовать операцию вывода на печать текущие задания в обратном порядке
+
 
 test()

@@ -11,11 +11,12 @@
 # Формат вывода
 # Функция должна вернуть голову развернутого списка.
 
-class DoubleConnectedNode:  
-    def __init__(self, value, next = None, prev = None):  
-        self.value = value  
-        self.next = next  
+class DoubleConnectedNode:
+    def __init__(self, value, next=None, prev=None):
+        self.value = value
+        self.next = next
         self.prev = prev
+
 
 def print_linked_list(vertex):
     while vertex:
@@ -23,9 +24,20 @@ def print_linked_list(vertex):
         vertex = vertex.next
     print("None")
 
-# Необходимо заменить pass на Ваш код
+
 def solution(node):
-    pass
+    prev = None
+    current = node
+    follow = current.next
+    while current:
+        current.next = prev
+        prev = current
+        current = follow
+        if follow:
+            follow = follow.next
+    return prev
+
+
 
 def test():
     task5 = DoubleConnectedNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")
@@ -45,7 +57,7 @@ def test():
 
     task3.next = task4
     task3.prev = task2
-    
+
     task4.next = task5
     task4.prev = task3
 
@@ -60,5 +72,6 @@ def test():
     # список -> Реализовать функцию, которая выведет на печать в терминале список текущих 
     # заданий -> Реализовать связанный список -> Проверить занимаемый данными объем 
     # оперативной памяти -> None
+
 
 test()
