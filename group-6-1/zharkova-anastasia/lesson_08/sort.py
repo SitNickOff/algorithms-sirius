@@ -119,36 +119,45 @@ print(merge_sort([7, 3, 9, 0, 25], 0, 5))
 
 
 
-def partition(array, low, high):
-    i = (low - 1)
-    pivot = array[high]
-    
-    for i in range(low, high):
-        if array[i] <= pivot:
-            j = j + 1
-            array[j], array[i] = array[i], array[j]
-    
-    array[i + 1], array[high] = array[high], array[i + 1]
+def partition(nums, low, high):  
+    # Выбираем средний элемент в качестве опорного
+    # Также возможен выбор первого, последнего
+    # или произвольного элементов в качестве опорного
+    pivot = nums[(low + high) // 2]
+    i = low - 1
+    j = high + 1
+    while True:
+        i += 1
+        while nums[i] < pivot:
+            i += 1
 
-    return (i + 1)
+        j -= 1
+        while nums[j] > pivot:
+            j -= 1
 
-def quicksort(array, low, high):
-    if len(array) < 2:  # базовый случай,
-        return array       # массивы с 0 или 1 элементами фактически отсортированы
-    else:  
-        if low <= high:
-            par_index = partition(array, low, high)
+        if i >= j:
+            return j
 
-    quicksort(array, low, par_index - 1)
-    quicksort(array, par_index + 1, high)
+        # Если элемент с индексом i (слева от опорного) больше, чем
+        # элемент с индексом j (справа от опорного), меняем их местами
+        nums[i], nums[j] = nums[j], nums[i]
 
-array = [45, 2, 11, 40, 12, 8, 6, 1, 0]
-n = len(array)
-quicksort(array, 0, n - 1)
-print("Отсортированный массив: ")
+def quick_sort(nums):  
+    # Создадим вспомогательную функцию, которая вызывается рекурсивно
+    def _quick_sort(items, low, high):
+        if low < high:
+            # This is the index after the pivot, where our lists are split
+            split_index = partition(items, low, high)
+            _quick_sort(items, low, split_index)
+            _quick_sort(items, split_index + 1, high)
 
-for j in range(n):
-    print("%d" % array[j])
+    _quick_sort(nums, 0, len(nums) - 1)
+
+
+# Проверяем, что оно работает
+random_list_of_nums = [2, 1, 10, 7, 9, 5, 4, 6, 11]  
+quick_sort(random_list_of_nums)  
+print(random_list_of_nums) 
 
 def counting_sort(array, k):
     counted_values = [0] * (k + 1)
