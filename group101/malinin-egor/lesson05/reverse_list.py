@@ -1,16 +1,3 @@
-# Напишите функцию, которая вернёт список в обратном порядке.
-
-# Внимание: в этой задаче не нужно считывать входные данные. 
-# Нужно написать только функцию, которая принимает на вход 
-# голову двусвязного списка и возвращает голову перевёрнутого 
-# списка. 
-
-# Формат ввода
-# Функция принимает на вход единственный аргумент — голову двусвязного списка.
-
-# Формат вывода
-# Функция должна вернуть голову развернутого списка.
-
 class DoubleConnectedNode:  
     def __init__(self, value, next = None, prev = None):  
         self.value = value  
@@ -23,9 +10,14 @@ def print_linked_list(vertex):
         vertex = vertex.next
     print("None")
 
-# Необходимо заменить pass на Ваш код
 def solution(node):
-    pass
+    while node.next != None:
+        node = node.next
+        # index -= 1
+    while node:
+        print(node.value, end=" -> ")
+        node = node.prev
+    print("None")
 
 def test():
     task5 = DoubleConnectedNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")

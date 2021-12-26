@@ -1,11 +1,3 @@
-# Напишите функцию solution, 
-# которая принимает на вход голову списка и номер удаляемого дела и 
-# возвращает голову обновлённого списка.
-
-# Внимание: в этой задаче не нужно считывать входные данные. Нужно написать 
-# только функцию, которая принимает на вход голову списка и номер удаляемого 
-# элемента и возвращает голову обновлённого списка.
-
 class Node:  
     def __init__(self, value, next_item=None):  
         self.value = value  
@@ -23,9 +15,14 @@ def print_linked_list(vertex):
         vertex = vertex.next_item
     print("None") 
 
-# Необходимо заменить pass на Ваш код
 def solution(node, idx):
-    pass
+    if node == None:
+        return node
+    if idx == 0:
+        return node.next_item
+    prev_node = get_node_by_index(node, idx-1)
+    prev_node.next_item = prev_node.next_item.next_item
+    return node
 
 def test():
     task5 = Node("Реализовать операцию вывода на печать текущие задания в обратном порядке", None)
