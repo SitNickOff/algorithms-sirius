@@ -10,7 +10,8 @@ def insertion_sort(array):
             j -= 1
 
         array[j] = item_to_insert
-        # print(f'step {i}, sorted {i+1} elements: {array}')
+        
+        print(f'step {i}, sorted {i+1} elements: {array}')
 
 insertion_sort([11, 2, 9, 7, 1])
 
@@ -33,7 +34,7 @@ def insertion_sort_by_key(array, key):
 cards = [3, 7, 9, 2, 3]
 insertion_sort_by_key(cards, card_strength) 
 
-# print(f'{cards}')
+print(f'{cards}')
 
 
 digit_lengths = [4, 4, 3, 3, 6, 4, 5, 4, 6, 6]  # длины слов «ноль», «один»,...
@@ -55,7 +56,7 @@ def insertion_sort_by_comparator(array, less):
 cards = [3, 7, 9, 2, 3]
 insertion_sort_by_comparator(cards, is_first_card_weaker) 
 
-# print(f'{cards}')
+print(f'{cards}')
 
 
 digit_lengths = [4, 4, 3, 3, 6, 4, 5, 4, 6, 6]  # длины слов «ноль», «один»,...
@@ -66,78 +67,119 @@ def key_for_card(card):
 cards = [2, 3, 7]
 cards.sort(key = key_for_card)
 
-# print(f'{cards}')
+print(f'{cards}')
 
 cards2 = [2, 3, 7]
-cards2 = sorted(cards2, key=lambda card: [-digit_lengths[card], card])
-# print(f'{cards2}')
+cards2 = sorted(cards2, key=lambda card: [- digit_lengths[card], card])
 
-# print(math.nan)
+print(f'{cards2}')
 
-def merge_sort(array):
-    if len(array) == 1:  # базовый случай рекурсии
-        return array
-  
-    # запускаем сортировку рекурсивно на левой половине
-    left = merge_sort(array[0 : len(array)/2])
+        # print(math.nan)
 
-    # запускаем сортировку рекурсивно на правой половине
-    right = merge_sort(array[len(array)/2 : len(array)])
+def merge(arr, lf, mid, rg):
+    left = arr[lf:mid]
+    right = arr[mid:rg]
+    k = lf
+    i = 0
+    j = 0
 
-    # заводим массив для результата сортировки
-    result = [] * len(array)
-    print(result)
-  
-    # сливаем результаты
-    l, r, k = 0, 0, 0
-    while l < len(left) and r < len(right):
-        # выбираем, из какого массива забрать минимальный элемент
-        if left[l] <= right[r]:
-            result[k] = left[l]
-            l += 1
+    while (lf + i < mid and mid + j < rg):
+        if (left[i] <= right[j]):
+            arr[k] = left[i]
+            i = i + 1
         else:
-            result[k] = right[r]
-            r += 1
-            k += 1
-
-    # Если один массив закончился раньше, чем второй, то
-    # переносим оставшиеся элементы второго массива в результирующий
-    while l < len(left): 
-        result[k] = left[l]   # перенеси оставшиеся элементы left в result
-        l += 1
-        k += 1  
-    while r < len(right): 
-        result[k] = right[r]  # перенеси оставшиеся элементы right в result
-        r += 1
-        k += 1
+            arr[k] = right[j]
+            j = j + 1
+        k = k + 1
+    if lf + i < mid:
+        while k < rg:
+            arr[k] = left[i]
+            i = i + 1
+            k = k + 1
+    else:
+        while k < rg:
+            arr[k] = right[j]
+            j = j + 1
+            k = k + 1
     
-    return result 
+    return arr
 
-# merge_sort([7, 3, 9, 0, 25])
+def merge_sort(arr, lf, rg):
 
-def partition(array, pivot):
-    less = [] # элементы array, меньшие pivot
-    center = [pivot] # элементы array, равные pivot
-    greater = [] # элементы array, большие pivot
-    return less, center, greater
+    if rg - lf > 1:
+        mid = (lf + rg)//2
+        merge_sort(arr, lf, mid)
+        merge_sort(arr, mid, rg)
+        merge(arr, lf, mid, rg)
 
-def quicksort(array):
-    if len(array) < 2:  # базовый случай,
-        return array       # массивы с 0 или 1 элементами фактически отсортированы
-    else:  # рекурсивный случай
-        random_index = random.randrange(len(array))
-        pivot = array[random_index]
-        less, center, greater = partition(array, pivot)
+    return arr
 
-        return quicksort(less) + center + quicksort(greater) 
+print(merge_sort([7, 3, 9, 0, 25], 0, 5))
+
+
+
+
+def partition(nums, low, high):  
+    # Выбираем средний элемент в качестве опорного
+    # Также возможен выбор первого, последнего
+    # или произвольного элементов в качестве опорного
+    pivot = nums[(low + high) // 2]
+    i = low - 1
+    j = high + 1
+    while True:
+        i += 1
+        while nums[i] < pivot:
+            i += 1
+
+        j -= 1
+        while nums[j] > pivot:
+            j -= 1
+
+        if i >= j:
+            return j
+
+        # Если элемент с индексом i (слева от опорного) больше, чем
+        # элемент с индексом j (справа от опорного), меняем их местами
+        nums[i], nums[j] = nums[j], nums[i]
+
+def quick_sort(nums):  
+    # Создадим вспомогательную функцию, которая вызывается рекурсивно
+    def _quick_sort(items, low, high):
+        if low < high:
+            # This is the index after the pivot, where our lists are split
+            split_index = partition(items, low, high)
+            _quick_sort(items, low, split_index)
+            _quick_sort(items, split_index + 1, high)
+
+    _quick_sort(nums, 0, len(nums) - 1)
+
+
+# Проверяем, что оно работает
+random_list_of_nums = [2, 1, 10, 7, 9, 5, 4, 6, 11]  
+quick_sort(random_list_of_nums)  
+print(random_list_of_nums) 
 
 def counting_sort(array, k):
-    counted_values = [0] * k
-    for value in array:
-        counted_values[value] += 1
+    counted_values = [0] * (k + 1)
+    for value in range(len(array)):
+        counted_values[array[value]] = counted_values[array[value]] + 1
 
-    index = 0
-    for value in range(k):
-        for value in counted_values:
-            array[index] = value
-            index += 1 
+    counted_values[0] = counted_values[0] - 1
+
+    for value in range(1, k + 1):
+        counted_values[value] = counted_values[value] + counted_values[value - 1]
+
+    result = [None] * len(array)
+
+    for i in reversed(array):
+        result[counted_values[i]] = i
+        counted_values[i] = counted_values[i] - 1
+
+    return result
+
+array = input('Введите массив: ').split()
+array = [int(x) for x in array]
+largest = max(array)
+sorted_list = counting_sort(array, largest)
+print('Отсортированный массив: ', end = '')
+print(sorted_list)
