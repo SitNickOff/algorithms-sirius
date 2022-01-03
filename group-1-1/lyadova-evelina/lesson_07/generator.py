@@ -29,3 +29,14 @@
 # 2
 # (())
 # ()()
+def generation(count, s = '', left = 0, right = 0):
+    if left == count and right == count:
+        print(s)
+    else:
+        if left < count:
+            generation(count, s + '(', left + 1, right)
+        if right < left:
+            generation(count, s + ')', left, right +1)
+
+n = int(input('Введите длину: '))
+generation(n)
