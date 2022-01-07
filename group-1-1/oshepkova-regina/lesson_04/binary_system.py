@@ -28,10 +28,27 @@
 # Вывод:
 # 10
 
-def add(b1, b2):
-    binary = '0'
 
-    return binary
+def add(b1, b2):
+    if len(b1) < len(b2):
+      b1 = (len(b2) - len(b1))*'0'+ b1
+    elif len(b2) < len(b1):
+      b2 = (len(b1) - len(b2))*'0'+ b2
+
+    sumList=[]
+    over=0
+
+    for i in range(len(b1) -1, -1, -1):
+        sum = (int(b1[i]) + int(b2[i]) +over) % 2
+        over = (int(b1[i]) + int(b2[i]) +over) // 2
+        sumList.append(str(sum))
+
+    if over:
+        sumList.append(str(over))
+
+    sumList.reverse()
+    return "".join(sumList)
+    
 
 def test(b1, b2, result):
     if add(b1, b2) != result:
