@@ -18,3 +18,24 @@
 # Ввод 4
 # Вывод 14
 
+def solution(n):
+    nums = [0] * (n+1)
+    nums[0] = 1
+    nums[1] = 1
+    for i in range(2, n+1):
+        G(i, nums)
+    return nums[n]
+
+def G(i, nums, j = 0):
+    if j < i:
+        nums[i] += nums[j] * nums[i - j - 1]
+        G(i,nums,j+1)
+
+def test(result,expected):
+    if result != expected:
+        print (f'error: {result} != {expected}')
+
+
+test(solution(2),2)
+test(solution(3),5)
+test(solution(4),14)

@@ -28,3 +28,4 @@ def test():
     assert solution(node5)
     node2.value = 5
     assert not solution(node5)
+      
