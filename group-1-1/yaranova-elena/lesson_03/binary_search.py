@@ -3,5 +3,24 @@
 
 # Решить задачу применяя алгоритм бинарного поиска
 
-def binary_search(numbers, x):
-    return -1
+def bin_search(num, x):
+    low = 0
+    high = len(num) - 1
+
+    while low <= high:
+
+        mid = (low + high) // 2
+        guess = num[mid]
+
+
+        if guess == x:
+            return mid
+        if guess > x:
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    return None
+
+print(bin_search([3, 6, 7, 9, 10, 13, 16], 16))
+print(bin_search([3, 6, 7, 9, 10, 13, 16], 1))
