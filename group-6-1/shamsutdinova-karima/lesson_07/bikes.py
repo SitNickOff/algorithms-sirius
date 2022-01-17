@@ -85,4 +85,4 @@ days = int(input('Количество дней: '))
 array = list(map(int, input('Накопления по дням: ').split()))
 price = int(input('Цена велосипеда: '))
 
-print('дни покупки: ', bike(days,array,price))
+print('дни покупки: ', bike(days,array,price)) 

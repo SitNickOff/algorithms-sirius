@@ -41,3 +41,4 @@ def gen(count, s = '', left = 0, right = 0):
 
 n = int(input('Введите длину ПСП: '))
 gen(n)
+
