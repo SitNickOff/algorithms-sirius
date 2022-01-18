@@ -43,7 +43,13 @@
 
 
 def solution(n, arr):
-    pass
+     amount = 0 
+     for i in range(1, n):
+        if arr[i] > arr[i-1]:
+            amount += arr[i] - arr[i-1]
+
+     print(f'amount: {amount}')
+     return amount
 
 def test():
     assert solution(6, [7, 1, 5, 3, 6, 4]) == 7
