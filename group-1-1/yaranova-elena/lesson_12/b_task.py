@@ -11,7 +11,12 @@
 # Выведите матрицу смежности n на n. На пересечении i-й строки и j-го столбца стоит единица, если есть ребро, ведущее из i в j.
 
 def solution(n, m, edges):
-    pass
+    array = []
+    for i in range(n):
+        array.append([0] * n)
+    for el in edges:
+        array[el[0] - 1][el[1] - 1] = 1
+    return array
 
 def test(result, expected):
     if result != expected:
