@@ -3,24 +3,18 @@ class Stack:
         self.items = []
 
     def push(self, item):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
+        self.items.append(item)
         pass
 
     def pop(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
+        return self.items.pop()
         pass
 
     def peak(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+         return self.items[-1]
 
     def size(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        return len(self.items)
 
 def test(result, expected):
     if result != expected:

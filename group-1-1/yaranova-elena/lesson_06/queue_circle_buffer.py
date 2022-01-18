@@ -7,18 +7,19 @@ class Queue:
         self.size = 0
 
     def is_empty(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        return self.size == 0
 
     def push(self, x):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
+        if self.size != self.max_n:
+            self.queue[self.tail] = x
+            self.tail = (self.tail + 1) % self.max_n
+            self.size += 1
         pass
 
     def pop(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
+        self.queue[self.head] = None
+        self.head = (self.head + 1) % self.max_n
+        self.size -= 1
         pass
         
 def test(result, expected):
