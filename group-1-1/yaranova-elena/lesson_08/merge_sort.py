@@ -28,16 +28,39 @@
 # 
 # Реализуйте эти две функции.
 
-def merge(arr, lf, mid, rg):
-	# Your code
-	# “ヽ(´▽｀)ノ”
-	pass
+def merge(arr, lf, rg):
+	if lf >= rg:
+		return
+	mid = (lf + rg) // 2
+	merge_sort(arr, lf, mid)
+	merge_sort(arr, mid + 1, rg)
+	merge(arr, lf, mid, rg)
 
 
-def merge_sort(arr, lf, rg):
-	# Your code
-	# “ヽ(´▽｀)ノ”
-	pass
+def merge_sort(arr, lf, mid, rg):
+	lfArray = arr[lf:mid]
+	rgArray = arr[mid:rg]
+	lfArrayIndex = 0
+	rgArrayIndex = 0
+	SortIndex = lf
+	k = []
+	while lfArrayIndex < len(lfArray) and rgArrayIndex < len(rgArray):
+		if lfArray[lfArrayIndex] <= rgArray[rgArrayIndex]:
+			k.append(lfArray[lfArrayIndex])
+			lfArrayIndex += 1
+		else:
+			k.append(rgArray[rgArrayIndex])
+			rgArrayIndex += 1
+		SortIndex += 1
+	while lfArrayIndex < len(lfArray):
+		k.append(lfArray[lfArrayIndex])
+		lfArrayIndex = lfArrayIndex + 1
+		SortIndex += 1
+	while rgArrayIndex < len(rgArray):
+		k.append(rgArray[rgArrayIndex])
+		rgArrayIndex = rgArrayIndex + 1
+		SortIndex += 1
+	return k
 
 def test():
 	a = [1, 4, 9, 2, 10, 11]
@@ -48,3 +71,4 @@ def test():
 	merge_sort(c, 0 , 6)
 	expected = [1, 1, 2, 2, 4, 10]
 	assert c == expected
+test()
