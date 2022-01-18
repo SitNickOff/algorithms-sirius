@@ -4,4 +4,16 @@
 # Решить задачу применяя алгоритм бинарного поиска
 
 def binary_search(numbers, x):
-    return -1
+    numbers.sort()
+    left = -1 
+    right = len(numbers)
+    while right > left + 1:
+        middle = (left + right) // 2
+        if numbers[middle] >= x:
+            right = middle
+        else:
+            left = middle
+    if right == x:
+        return right
+    else:
+        return -1
