@@ -28,16 +28,43 @@
 # Вывод:
 # 10
 
-def add(b1, b2):
-    binary = '0'
+def sum(a,b):
+    ar=[]
+    br=[]
+    arr=[]
+    summ=""
+    
+    for i in str(a):
+        ar.append(int(i))
+    for i in str(b):
+        br.append(int(i))
 
-    return binary
+    c=max(len(ar),len(br))-1
+    
+    for i in range(c+1):
+        if ar[c]==br[c]:
+            if ar[c]==1:
+                arr.append(0)
+                ar[c-1]+=1
+                c-=1
+            else:
+                arr.append(0)
+                c-=1
+        elif ar[c]>1:
+            arr.append(0)
+            ar[c-1]+=1
+            c-=1
+        else:
+            arr.append(1)
+            c-=1
+    arr.append(1)
+    arr=arr[::-1]
+    for i in arr:
+        summ+=str(i)
+    return summ
 
-def test(b1, b2, result):
-    if add(b1, b2) != result:
-        print('Ошибка! Ожидали: ', result, ' -  Получили: ', add(b1, b2))
-    else:
-        print('Отлично: ', result, '==', add(b1, b2))
+print(sum(1010,1011))
 
-test('1010', '1011', '10101')
-test('1', '1', '10')
+
+#test('1010', '1011', '10101')
+#test('1', '1', '10')
