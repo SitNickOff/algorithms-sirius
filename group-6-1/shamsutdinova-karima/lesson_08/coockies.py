@@ -42,3 +42,37 @@
 # 1 1
 
 # 1
+
+def coockies(child, cooksie):
+    
+    child = sorted(child)
+    cooksie = sorted(cooksie)
+    n_child = len(child)
+    n_coockies = len(cooksie)
+    cookie = 0
+    answer = 0
+    i = 0
+
+    while i < n_child and i < n_coockies:
+        if cooksie[i] >= child[i]:
+            i += 1
+            answer += 1
+            cookie += 1
+        else:
+            i += 1
+    return answer
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
+
+zhadnost = [1, 2]
+size = [2, 1, 3]
+
+zhadnost1 = [2, 1, 3]
+size1 = [1, 1]
+
+test(coockies(zhadnost, size), 2)
+test(coockies(zhadnost1, size1), 1)

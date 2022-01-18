@@ -33,3 +33,15 @@
 
 # 20
 
+def perimeter(num, arr):
+    for i in range(len(arr)):
+        if len(arr) == num:
+                arr.sort()
+
+    for i in range(len(arr) - 3, - 1, - 1):
+        if arr[i] + arr[i + 1] > arr[i + 2]:
+            return arr[i] + arr[i + 1] + arr[i + 2]
+    return 0
+
+print (perimeter(6, [5, 3, 7, 2, 8, 3]))
+
