@@ -29,3 +29,36 @@
 # 2
 # (())
 # ()()
+
+
+def GEneratOR(n):
+    slovo_from_skobka = []
+
+    def biba(S=[], left=0, right=0):
+        if len(S) == 2 * n:
+            slovo_from_skobka.append("".join(S))
+            return
+
+        if left < n:
+            S.append("(")
+            biba(S, left + 1, right)
+            S.pop()
+
+        if right < left:
+            S.append(")")
+            biba(S, left, right + 1)
+            S.pop()
+
+
+    biba()
+    return slovo_from_skobka
+
+def test(result, expected):
+    if result != expected:
+        print(f'Oh shit Here we go again: {result} != {expected}')
+    else:
+        print('DAAAAMN U R a GOD')
+
+
+test(GEneratOR(2), ["(())", "()()"])
+test(GEneratOR(3), ["((()))", "(()())", "(())()", "()(())", "()()()"])

@@ -49,3 +49,40 @@
 # 10
 
 # -1 -1
+
+def bike(days, array, price, answer=None):
+    if answer is None:
+        answer = [-1, -1]
+    double_price = price * 2
+    length = days - len(array)
+    if length == 0:
+        answer = [-1, -1]
+    if days - len(array) == len(array):
+        return answer
+    else:
+        if array[length] - double_price >= 0 and answer[1] == -1:
+            answer[1] = length + 1
+            if -1 in answer:
+                return bike(days + 1, array, price, answer)
+            else:
+                return answer
+        elif array[length] - price >= 0 and answer[0] == -1:
+            answer[0] = length + 1
+            if -1 in answer:
+                return bike(days + 1, array, price, answer)
+            else:
+                return answer
+        else:
+            return bike(days + 1, array, price, answer)
+
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка: {result} != {expected}')
+    else:
+        print('Ok!')
+
+
+test(bike(6, [1, 2, 4, 4, 6, 8], 3), [3, 5])
+test(bike(6, [1, 2, 4, 4, 4, 4], 3), [3, -1])
+test(bike(6, [1, 2, 4, 4, 4, 4], 10), [-1, -1])
