@@ -28,16 +28,29 @@
 # Вывод:
 # 10
 
-def add(b1, b2):
-    binary = '0'
+def convert_to_10(num):
+    string = num[::-1]
+    result = 0
+    for i in range(0, len(string)):
+        result += int(string[i]) * (2 ** i)
+    return result
 
-    return binary
+
+def add(b1, b2):
+    binary = ''
+    sum = convert_to_10(b1) + convert_to_10(b2)
+    while sum > 0:
+        binary += str(sum % 2)
+        sum //= 2
+    return binary[::-1]
+
 
 def test(b1, b2, result):
     if add(b1, b2) != result:
         print('Ошибка! Ожидали: ', result, ' -  Получили: ', add(b1, b2))
     else:
         print('Отлично: ', result, '==', add(b1, b2))
+
 
 test('1010', '1011', '10101')
 test('1', '1', '10')
