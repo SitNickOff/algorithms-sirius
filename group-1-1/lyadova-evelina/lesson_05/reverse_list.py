@@ -11,13 +11,13 @@
 # Формат вывода
 # Функция должна вернуть голову развернутого списка.
 
-class DoubleConnectedNode:  
+class DoublConNode:  
     def __init__(self, value, next = None, prev = None):  
         self.value = value  
         self.next = next  
         self.prev = prev
 
-def print_linked_list(vertex):
+def print_list(vertex):
     while vertex:
         print(vertex.value, end=" -> ")
         vertex = vertex.next
@@ -25,15 +25,21 @@ def print_linked_list(vertex):
 
 # Необходимо заменить pass на Ваш код
 def solution(node):
-    pass
+    while node.next != None:
+        node = node.next
+        # index -= 1
+    while node:
+        print(node.value, end=" -> ")
+        node = node.prev
+    print("None")
 
 def test():
-    task5 = DoubleConnectedNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")
-    task4 = DoubleConnectedNode("Реализовать операцию удаления элемента из списка")
-    task3 = DoubleConnectedNode("Реализовать операцию добавления элемента в список")
-    task2 = DoubleConnectedNode("Реализовать функцию, которая выведет на печать в терминале список текущих заданий")
-    task1 = DoubleConnectedNode("Реализовать связанный список")
-    task0 = DoubleConnectedNode("Проверить занимаемый данными объем оперативной памяти")
+    task5 = DoublConNode("Реализовать операцию вывода на печать текущие задания в обратном порядке")
+    task4 = DoublConNode("Реализовать операцию удаления элемента из списка")
+    task3 = DoublConNode("Реализовать операцию добавления элемента в список")
+    task2 = DoublConNode("Реализовать функцию, которая выведет на печать в терминале список текущих заданий")
+    task1 = DoublConNode("Реализовать связанный список")
+    task0 = DoublConNode("Проверить занимаемый данными объем оперативной памяти")
 
     task0.next = task1
 
@@ -51,8 +57,8 @@ def test():
 
     task5.prev = task4
 
-    new_head = solution(task0)
-    print_linked_list(new_head)
+    n_head = solution(task0)
+    print_list(n_head)
 
     # result: 
     # Реализовать операцию вывода на печать текущие задания в обратном порядке -> Реализовать 
