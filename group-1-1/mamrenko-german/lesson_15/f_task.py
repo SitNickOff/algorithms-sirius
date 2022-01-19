@@ -23,21 +23,18 @@
 # Ввод: 2 2
 # Вывод: 1
 
-def alla(n, k=2):
-    dp = [0] * (max(n, k))
+def alla(n, k):
+    dp = [0] * (n + 1)
     dp[0] = 0
-    for i in range(k):
-        dp[i + 1] = 2 ** i
+    for i in range(k + 1):
+        dp[i] = 2 ** (i - 1)
 
     q = 10 ** 9 + 7
-    print(f'q: {q}')
     if n <= k:
         return dp[n - 1] % q
     for i in range(k + 1, n):
         for j in range(1, k + 1):
             dp[i] += dp[i - j]
-
-    print(dp)
     return dp[n - 1] % q
 
 
@@ -45,15 +42,9 @@ def test(result, expected):
     if result != expected:
         print(f'error: {result} != {expected}')
     else:
-        print("OK!")
-
-
-# test(alla(1), 1)
-# test(alla(2), 2)
-# test(alla(3), 3)
-# test(alla(4), 5)
-# test(alla(5), 8)
+        print(f"OK! {result} = {expected}")
 
 test(alla(6, 3), 13)
-#test(alla(2, 2), 1)
+test(alla(7, 7), 32)
 test(alla(79, 34), 470472762)
+test(alla(2, 2), 1)
