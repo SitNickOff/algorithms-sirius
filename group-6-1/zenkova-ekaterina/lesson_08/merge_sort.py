@@ -29,22 +29,55 @@
 # Реализуйте эти две функции.
 
 def merge(arr, lf, mid, rg):
-	# Your code
-	# “ヽ(´▽｀)ノ”
-	pass
+    left = arr[lf:mid]
+    right = arr[mid:rg]
+    k = lf
+    i = 0
+    j = 0
 
+    while (lf + i < mid and mid + j < rg):
+        if (left[i] <= right[j]):
+            arr[k] = left[i]
+            i = i + 1
+        else:
+            arr[k] = right[j]
+            j = j + 1
+        k = k + 1
+    if lf + i < mid:
+        while k < rg:
+            arr[k] = left[i]
+            i = i + 1
+            k = k + 1
+    else:
+        while k < rg:
+            arr[k] = right[j]
+            j = j + 1
+            k = k + 1
+    
+    return arr
 
 def merge_sort(arr, lf, rg):
-	# Your code
-	# “ヽ(´▽｀)ノ”
-	pass
 
-def test():
-	a = [1, 4, 9, 2, 10, 11]
-	b = merge(a, 0, 3, 6)
-	expected = [1, 2, 4, 9, 10, 11]
-	assert b == expected
-	c = [1, 4, 2, 10, 1, 2]
-	merge_sort(c, 0 , 6)
-	expected = [1, 1, 2, 2, 4, 10]
-	assert c == expected
+    if rg - lf > 1:
+        mid = (lf + rg)//2
+        merge_sort(arr, lf, mid)
+        merge_sort(arr, mid, rg)
+        merge(arr, lf, mid, rg)
+
+    return arr
+ 
+def test(arr, lf, mid, rg, result):
+    if merge(arr, lf, mid, rg) != result:
+        print('Ошибка! Ожидали: ', result, ' -  Получили: ', merge(arr, lf, mid, rg))
+    else:
+        print('Отлично: ', result, '==', merge(arr, lf, mid, rg))
+        
+test([1, 4, 9, 2, 10, 11], 0, 3, 6, [1, 2, 4, 9, 10, 11])
+
+def test1(arr, lf, rg, result):
+    if merge_sort(arr, lf, rg) != result:
+        print('Ошибка! Ожидали: ', result, ' -  Получили: ', merge_sort(arr, lf, rg))
+    else:
+        print('Отлично: ', result, '==', merge_sort(arr, lf, rg))
+
+test1([1, 4, 2, 10, 1, 2], 0, 6, [1, 1, 2, 2, 4, 10])
