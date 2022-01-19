@@ -4,4 +4,17 @@
 # Решить задачу применяя алгоритм бинарного поиска
 
 def linear_search(numbers, x):
-    return -1
+    for index in range(len(numbers)):  
+        if numbers[index] == x:
+            return index       
+    return -1                   
+
+list_num= list(map(int, input("Запишите числа, среди которых искать").split())) 
+num = int(input("Введите число-индекс, которое нужно найти: ")) 
+p = linear_search(list_num,num)
+if p == -1:
+    print("Всё работает, такого числа нет,", p)
+elif p != -1:
+    print("Всё работает, такое число есть. Число", num ,"под индексом", p)
+else:
+    print("Ничего не работает, ошибка")
