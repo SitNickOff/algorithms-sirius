@@ -23,15 +23,30 @@
 # Выведите единственное число —– максимальную сумму (в алгосских франках), 
 # которую Гоша сможет вынести из пещеры в своём рюкзаке.
 
-def solution(m, n, arr):
-    pass
+def solution(m, arr):
+    arr.sort(reverse = True)
+    print(arr)
+    weights = 0
+    amount = 0
 
+    for i in arr:
+        if m - weights >= i[1]:
+            amount += i[0] * i[1]
+            weights += i[1]
+        else:
+            return amount + i[0] * (m - weights)
+            
+    return amount
 
-def test():
-    assert solution(10, 3, [[8, 1], [2, 10], [4, 5]]) == 36 
-    assert solution(10000, 1, [[4, 20]]) == 80
+def test(result, expected):
+    if expected != result:
+        print(f"Error: {expected} != {result}")
+    else:
+        print(f"OK! {result}")
+        
+test(solution(10, [[8, 1], [2, 10], [4, 5]]), 36)
+test(solution(10000, [[4, 20]]), 80)
 
-test()
 
 # m = int(input())
 # n = int(input())
