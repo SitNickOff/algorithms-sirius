@@ -27,3 +27,31 @@
 
 # 92
 # wa wb wc xa xb xc ya yb yc za zb zc
+
+dict = {
+    2:'abc',
+    3:'def',
+    4:'ghi',
+    5:'jkl',
+    6:'mno',
+    7:'pqrs',
+    8:'tuv',
+    9:'wxyz'
+}
+
+def comb(n, c):
+    result = ''
+    for i in dict[n]:
+        for j in dict[c]:
+            result = result + ' ' + i + j 
+    return result
+
+
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
+
+test(comb(2, 3), ' ad ae af bd be bf cd ce cf')
