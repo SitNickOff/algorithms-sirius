@@ -19,40 +19,57 @@
 
 class StackMaxEffective:
     def __init__(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        self.items = []
+        self.maximum = [] 
+        self.size = 0        
 
-    def push(self, item):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
-        
+    def push(self, item):               
+        self.items.append(item)        
+        if len(self.maximum) == 0:
+            self.maximum.append(item)
+        elif item > self.maximum[self.size - 1]:
+            self.maximum.append( item )
+        else:
+            self.maximum.append( self.maximum[self.size - 1] )
+        self.size += 1 
+        print(f'size: {self.size} - {self.items} - {self.maximum}')
+           
 
     def pop(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        
+        if len(self.items) == 0:
+            return 'error'
+        else:
+            self.size -= 1
+            self.maximum.pop()
+            return self.items.pop()
+        
 
     def get_max(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
-
-
+        
+        if len(self.items) == 0:
+            return None
+        else:
+            return self.maximum[self.size-1]
+    
 def worker(commands):
-    # Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
-
-# n = int(input())
-# commands = []
-# for i in range(n):
-#     commands.append(input())
-
-# for result in worker(commands):
-#     print(result)
-
+    result = []
+    stack = StackMaxEffective()
+    
+    for command in commands:
+        if command == 'pop':
+            if stack.pop() == 'error':
+                result.append('error')                
+        elif command == 'get_max':
+            result.append(stack.get_max())
+        else:
+            stack.push(int(command.split(' ')[1]))
+    
+    return result
+    
+    
+    
+    
 def test(result, expected):
     if result != expected:
         print(f'Ошибка: {result} != {expected}')
