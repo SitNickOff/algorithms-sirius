@@ -3,5 +3,30 @@
 
 # Решить задачу применяя алгоритм бинарного поиска
 
-def binary_search(numbers, x):
+def binarySearch(array, x, low, high):
+
+    while low <= high:
+
+        mid = low + (high - low)//2
+
+        if array[mid] == x:
+            return mid
+
+        elif array[mid] < x:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
     return -1
+
+
+array = [18, 25, 66, 121, 17, 157, 205]
+x = 18
+
+result_ = binarySearch(array, x, 0, len(array)-1)
+
+if result_ != -1:
+    print("Index is: " + str(result_))
+else:
+    print("Not found: -1")
