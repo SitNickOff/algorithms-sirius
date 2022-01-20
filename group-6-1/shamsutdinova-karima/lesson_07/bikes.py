@@ -81,8 +81,25 @@ def bike(days,array,price, answer = [-1,-1]):
             return bike(days + 1, array, price, answer)
 
 
-days = int(input('Количество дней: '))
-array = list(map(int, input('Накопления по дням: ').split()))
-price = int(input('Цена велосипеда: '))
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
 
-print('дни покупки: ', bike(days,array,price)) 
+
+days1 = 6
+array1 = [1, 2, 4, 4, 6, 8]
+price1 = 3
+
+days2 = 6
+array2 = [1, 2, 4, 4, 4, 4]
+price2 = 3
+
+days3 = 6
+array3 = [1, 2, 4, 4, 4, 4]
+price3 = 10
+
+test(bike(days1, array1, price1), [3, 5])
+test(bike(days2, array2, price2), [3, -1])
+test(bike(days3, array3, price3), [-1, -1])
