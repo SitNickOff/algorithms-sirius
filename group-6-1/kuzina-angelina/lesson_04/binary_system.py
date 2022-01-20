@@ -28,10 +28,28 @@
 # Вывод:
 # 10
 
+
+
+
+def convert_to_10(num):
+    string = num[::-1]
+    result = 0
+    for i in range(0, len(string)):
+        result += int(string[i]) * (2 ** i)
+    return result
+
+
 def add(b1, b2):
     binary = '0'
+    binary = ''
+    sum = convert_to_10(b1) + convert_to_10(b2)
+    while sum > 0:
+        binary += str(sum % 2)
+        sum //= 2
+    return binary[::-1]
 
     return binary
+
 
 def test(b1, b2, result):
     if add(b1, b2) != result:
