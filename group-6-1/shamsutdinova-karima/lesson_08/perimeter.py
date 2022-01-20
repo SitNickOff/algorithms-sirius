@@ -43,5 +43,17 @@ def perimeter(num, arr):
             return arr[i] + arr[i + 1] + arr[i + 2]
     return 0
 
-print (perimeter(6, [5, 3, 7, 2, 8, 3]))
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
 
+a = 4
+b = [6, 3, 3, 2]
+
+a1 = 6
+b1 = [5, 3, 7, 2, 8, 3]
+
+test(perimeter(a, b), 8)
+test(perimeter(a1, b1), 20)
