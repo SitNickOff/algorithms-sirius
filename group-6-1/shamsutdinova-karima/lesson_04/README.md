@@ -8,6 +8,7 @@
 - [X] Выполнить домашнее задание. Выполнить задачу "Факторизация" (Задание: factorization.py)
 - [X] Выполнить домашнее задание. Выполнить задачу "Лишняя буква" (Задание: extra_letter.py)
 
+
 Теория: 
 1. Как оценивать время исполнения: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=159%3A3
 2. Как решать алгоритмические задачи: https://www.figma.com/file/83PQbJXKbUWVNEFR1lMlHq/theory?node-id=160%3A12
