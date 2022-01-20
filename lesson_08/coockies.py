@@ -42,3 +42,34 @@
 # 1 1
 
 # 1
+
+def Justice(child, cooksie):
+    child = sorted(child)
+    cooksie = sorted(cooksie)
+    children_amount = len(child)
+    cooksie_amount = len(cooksie)
+    cookie = 0
+    answer = 0
+    i = 0
+    while i < children_amount and i < cooksie_amount:
+        if cooksie[i] >= child[i]:
+            i += 1
+            answer += 1
+            cookie += 1
+        else:
+            i += 1
+    return answer
+
+def test(expected, result):
+    if expected != result:
+        print('Error! Was expecting: ', expected, ' -  Received: ', result)
+    else:
+        print('Excellent: ', result)
+
+greed = [1, 2]
+size = [2, 1, 3]
+
+greed1 = [2, 1, 3]
+size1 = [1, 1]
+test(Justice(greed, size), 2)
+test(Justice(greed1, size1), 1) 
