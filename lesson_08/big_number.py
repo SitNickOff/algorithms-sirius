@@ -35,3 +35,21 @@
 # 2 4 5 2 10
 
 # 542210
+
+import functools
+
+def largestNumber(nums):
+    float_calc = sorted(list(enumerate([n / (10 ** len(str(n)) - 1) for n in nums])),
+                  key=lambda x: x[1], reverse=True);
+
+    return int(''.join([str(nums[i[0]]) for i in float_calc]));
+
+def test(expected, result):
+    if expected != result:
+        print('Error! Was expecting: ', expected, ' -  Received: ', result)
+    else:
+        print('Excellent: ', result)
+
+test(largestNumber([15, 56, 2]), 56215)
+test(largestNumber([1, 783, 2]), 78321)
+test(largestNumber([2, 4, 5, 2, 10]), 542210) 
