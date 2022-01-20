@@ -1,31 +1,33 @@
 class Queue:
-    def __init__(self, n) -> None:
+    def _init_(self, n) -> None:
         self.queue = [None] * n
         self.max_n = n
         self.head = 0
         self.tail = 0
         self.size = 0
 
-    def is_empty(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+
+    def mop(self):
+            return self.size == 0
 
     def push(self, x):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if self.size != self.max_n:
+            self.queue[self.tail] = x
+            self.tail = (self.tail + 1) % self.max_n
+            self.size += 1
 
     def pop(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        self.queue[self.head] = None
+        self.head = (self.head + 1) % self.max_n
+        self.size -= 1
         
 def test(result, expected):
     if result != expected:
         print(f'Ошибка: {result} != {expected}')
+    else:
+        print("OK")
 
-def full_test():
+def all_test():
     q = Queue(8) 
     test(q.queue, [None, None, None, None, None, None, None, None])
 
@@ -54,4 +56,4 @@ def full_test():
     test(q.queue, [12, None, None, 11, -8, 7, 3, 16])
     test(q.size, 6)
 
-full_test()
+all_test()
