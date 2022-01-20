@@ -24,3 +24,31 @@
 # Пример 3
 # Ввод: 2 2
 # Вывод: 1
+
+def basee(k):
+    result = []
+
+def alla(n, k):
+    dp = [0] * (n + 2)
+    dp[0] = 0
+
+    for i in range(1, k + 1):
+        dp[i] = 2 ** (i -1)
+
+    for i in range(k + 1, n + 1):
+        for j in range(k + 1):
+            dp[i] += dp[i - j]
+
+    print(f'dp: {dp}')
+    return dp[n - 1] % (10 ** 9 +7)
+
+def test(result, expected):
+    if result != expected:
+        print(f'error: {result} != {expected}')
+    else:
+        print("OK!")
+
+test(alla(6, 3), 13)
+test(alla(7, 7), 32)
+test(alla(2, 2), 1)
+test(alla(79, 34), 470472762)
