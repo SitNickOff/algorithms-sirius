@@ -9,8 +9,14 @@
 # Выведите лишнюю букву.
 
 def extra_letter(s, t):
-
-    return 'e'
+    if len(s) > len(t):
+        for i in s:
+            if s.count(i) != t.count(i):
+                return i
+    else:
+        for i in t:
+            if t.count(i) != s.count(i):
+                return i
 
 
 def test(s, t, result):
@@ -19,6 +25,8 @@ def test(s, t, result):
     else:
         print('Отлично: ', result, '==', extra_letter(s, t))
 
+
 test('abcd', 'abcde', 'e')
 test('go', 'ogg', 'g')
 test('xtkpx', 'xkctpx', 'c')
+© 2021 GitHub, Inc.
