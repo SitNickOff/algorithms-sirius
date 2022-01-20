@@ -21,11 +21,10 @@ def insert_node(head, index, value):
         if index == 0:
                 new_node.next = head
         return new_node
-
-previous_node = get_node_by_index(head, index-1)
-new_node.next = previous_node.next 
-previous_node.next = new_node
-print(head)
+        previous_node = get_node_by_index(head, index-1)
+        new_node.next = previous_node.next 
+        previous_node.next = new_node
+        print(head)
 
 
 node3 = Node('Node3')
