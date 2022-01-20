@@ -9,8 +9,14 @@
 # Выведите лишнюю букву.
 
 def extra_letter(s, t):
-
-    return 'e'
+    ss = list(s)
+    tt = list(t)
+    ss.sort()
+    tt.sort()
+    for i in ss:
+        if i in tt:
+            tt.remove(i)
+    return tt[0]
 
 
 def test(s, t, result):
