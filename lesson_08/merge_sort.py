@@ -28,13 +28,13 @@
 # 
 # Реализуйте эти две функции.
 
-def merge(arr, lf, mid, rg):
+def merge(array, left, mid, right):
 	# Your code
 	# “ヽ(´▽｀)ノ”
 	pass
 
 
-def merge_sort(arr, lf, rg):
+def merge_sort(array, left, right):
 	# Your code
 	# “ヽ(´▽｀)ノ”
 	pass
@@ -47,4 +47,4 @@ def test():
 	c = [1, 4, 2, 10, 1, 2]
 	merge_sort(c, 0 , 6)
 	expected = [1, 1, 2, 2, 4, 10]
-	assert c == expected
+	assert c == expected 

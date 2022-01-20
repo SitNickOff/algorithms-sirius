@@ -33,3 +33,22 @@
 
 # 20
 
+def largestPerimeter(num):
+    num.sort(reverse=True)
+    i = 0
+    while i + 2 < len(num):
+        if num[i] < num[i + 1] + num[i + 2] and num[i + 1] < num[i] + num[i + 2] and num[i + 2] < num[i + 1] + \
+                num[i]:
+            return sum(num[i:i + 3])
+        else:
+            i += 1
+    return 0
+
+def test(expected, result):
+    if expected != result:
+        print('Error! Was expecting: ', expected, ' -  Received: ', result)
+    else:
+        print('Excellent: ', result)
+
+test(largestPerimeter([6, 3, 3, 2]), 8)
+test(largestPerimeter([5, 3, 7, 2, 8, 3]), 20)

@@ -77,7 +77,7 @@ cards2 = sorted(cards2, key=lambda card: [-digit_lengths[card], card])
 def merge_sort(array):
     if len(array) == 1:  # базовый случай рекурсии
         return array
-  
+
     # запускаем сортировку рекурсивно на левой половине
     left = merge_sort(array[0 : len(array)/2])
 
@@ -87,7 +87,7 @@ def merge_sort(array):
     # заводим массив для результата сортировки
     result = [] * len(array)
     print(result)
-  
+
     # сливаем результаты
     l, r, k = 0, 0, 0
     while l < len(left) and r < len(right):
@@ -110,7 +110,7 @@ def merge_sort(array):
         result[k] = right[r]  # перенеси оставшиеся элементы right в result
         r += 1
         k += 1
-    
+
     return result 
 
 # merge_sort([7, 3, 9, 0, 25])
