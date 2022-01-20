@@ -4,7 +4,10 @@
 # Ограничение памяти	121Mb	121Mb
 # Ввод	стандартный ввод или input.txt
 # Вывод	стандартный вывод или output.txt
-# Вася решил накопить денег на два одинаковых велосипеда — себе и сестре. У Васи есть копилка, в которую каждый день он может добавлять деньги (если, конечно, у него есть такая финансовая возможность). В процессе накопления Вася не вынимает деньги из копилки.
+
+# Вася решил накопить денег на два одинаковых велосипеда — себе и сестре. У Васи есть копилка, 
+# в которую каждый день он может добавлять деньги (если, конечно, у него есть такая финансовая возможность). 
+# В процессе накопления Вася не вынимает деньги из копилки.
 
 # У вас есть информация о росте Васиных накоплений — сколько у Васи в копилке было денег в каждый из дней.
 
@@ -49,3 +52,54 @@
 # 10
 
 # -1 -1
+
+def bike(days,array,price, answer = [-1,-1]):
+    price_2 =  2 * price
+    lenth = days - len(array)
+
+    if lenth == 0:
+        answer = [-1,-1]
+    if days - len(array) == len(array) :
+        return answer
+
+    else:
+        if array[lenth] - price_2 >= 0 and answer[1] == -1:
+            answer[1] = lenth + 1  
+            if -1 in answer:
+                return bike(days + 1, array, price, answer)
+            else:
+                return answer
+
+        elif array[lenth] - price >= 0 and answer[0] == -1:
+            answer[0] = lenth + 1  
+            if -1 in answer:
+                return bike(days + 1, array, price, answer)
+            else:
+                return answer 
+
+        else:
+            return bike(days + 1, array, price, answer)
+
+
+def test(result, expected):
+    if result != expected:
+        print(f'Ошибка!!! {result} != {expected}')
+    else:
+        print(f'Код работает: {result} == {expected}')
+
+
+days1 = 6
+array1 = [1, 2, 4, 4, 6, 8]
+price1 = 3
+
+days2 = 6
+array2 = [1, 2, 4, 4, 4, 4]
+price2 = 3
+
+days3 = 6
+array3 = [1, 2, 4, 4, 4, 4]
+price3 = 10
+
+test(bike(days1, array1, price1), [3, 5])
+test(bike(days2, array2, price2), [3, -1])
+test(bike(days3, array3, price3), [-1, -1])

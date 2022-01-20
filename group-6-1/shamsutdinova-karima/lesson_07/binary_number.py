@@ -1,12 +1,11 @@
-def binary_string(n): 
+def binary_number(n):
     if n < 0:
-        return "-" + binary_string(-n)
+        return "-" + binary_number(-n)
 
     if n == 0 or n == 1:
         return str(n)
 
     last_digit = n % 2
-    return as_binary_string(n // 2) + str(last_digit)
+    return binary_number(n // 2) + str(last_digit)
 
-
-print(binary_string(-255))
+print(binary_number(251))
