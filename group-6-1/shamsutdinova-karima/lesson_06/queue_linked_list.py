@@ -13,44 +13,42 @@
 # Формат вывода
 # Выведите ответ на каждый запрос по одному в строке.
 
-class Node:  
-    def __init__(self, value, next_item = None):  
-        self.value = value  
-        self.next_item = next_item
-
-class Queue:  
-    def __init__(self):  
-        self.size = 0
-        self.header = None
-        self.tail = None
-
-    def size(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+class Stack:
+    def __init__(self):
+        self.stack = []
+        self.stack_new=[]
 
     def get(self):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if len(self.stack) == 0:
+            self.stack_new.append('error')
+        else: 
+            removed = int(self.stack.pop(0))
+            self.stack_new.append(removed)
 
-    def put(self, value):
-        #  Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+    def put(self, item):
+        self.stack.append(item)
+    
+    def size(self):
+        self.stack_new.append(len(self.stack))
 
+    def __get__(self):
+        return self.stack_new
+
+   
 def worker(commands):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
-
-# count_commands = int(input())
-# commands = []
-# for i in range(count_commands):
-#     commands.append(input())
-
-# for result in worker(commands):
-#     print(result)
+    
+    commandes = Stack()
+    for i in range(len(commands)):
+        if ' ' in commands[i]:
+            command, number = commands[i].split()
+        else: command = commands[i]
+        if command == 'put':
+            commandes.put(number)
+        if command == 'get':
+            commandes.get()
+        if command == 'size':
+            commandes.size()
+    return commandes.__get__()
 
 def test(result, expected):
     if result != expected:
