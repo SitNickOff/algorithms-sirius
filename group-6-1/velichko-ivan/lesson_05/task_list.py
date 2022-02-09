@@ -9,9 +9,10 @@ class Node:
         self.value = value  
         self.next_item = next_item
 
-# Необходимо заменить pass на Ваш код
 def solution(node):
-    pass 
+    while node:
+        print(node.value)
+        node = node.next_item 
 
 def test():
     task5 = Node("Реализовать операцию вывода на печать текущие задания в обратном порядке", None)
@@ -21,6 +22,7 @@ def test():
     task1 = Node("Реализовать связанный список", task2)
     task0 = Node("Проверить занимаемый данными объем оперативной памяти", task1)
     solution(task0)
+    
     # Output is:
     # Проверить занимаемый данными объем оперативной памяти
     # Реализовать связанный список

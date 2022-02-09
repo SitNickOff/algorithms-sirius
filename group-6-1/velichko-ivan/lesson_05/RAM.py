@@ -22,3 +22,5 @@ print(sys.getsizeof([1, 2, 3, 4, 5, 6, 7]), 7) # 120 = (56 + 8 * 2)
 print(sys.getsizeof([1, 2, 3, 4, 5, 6, 7, 8]), 8) # 120 = (56 + 8 * 2)
 print(sys.getsizeof([1, 2, 3, 4, 5, 6, 7, 8, 9]), 9) # 152 = (56 + 8 * 2)
 print(sys.getsizeof([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), 10) # 152 = (56 + 8 * 2)
+
+# Complete
